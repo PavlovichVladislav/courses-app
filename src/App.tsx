@@ -3,7 +3,7 @@ import './index.css';
 
 const App = () => {
     return (
-        <div>
+        <div className='app'>
             Hello world!
             <Counter/>
         </div>
