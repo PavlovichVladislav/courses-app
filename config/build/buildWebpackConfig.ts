@@ -19,7 +19,7 @@ export const buildWebpackConfig = (settings: BuildSettings): webpack.Configurati
     mode: mode,
     entry,
     output: {
-      filename: 'courses.[contenthash].js',
+      filename: '[name].[contenthash].js',
       path: output,
       clean: true
     },
