@@ -10,6 +10,7 @@ export const buildDevServer = (settings: DevServerSettings): DevConfig => {
     },
     compress: true,
     port,
-    historyApiFallback: true
+    historyApiFallback: true,
+    open: true
   }
 }
