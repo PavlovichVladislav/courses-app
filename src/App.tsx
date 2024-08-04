@@ -1,17 +1,10 @@
 import { Link } from 'react-router-dom';
 import Counter from './components/Counter';
 import './styles/index.scss';
-import { useContext, useState } from 'react';
-import { Theme, ThemeContext } from './theme/ThemeContext';
+import { useTheme } from './theme/useTheme';
 
 const App = () => {
-    const { theme, setTheme } = useContext(ThemeContext); 
-
-    const toggleTheme = () => {
-        const newTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
-  
-        setTheme(newTheme)
-    }
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <div className={`app ${theme}`}>

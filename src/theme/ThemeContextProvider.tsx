@@ -11,7 +11,7 @@ const ThemeContextProvider: ReactFCWithChildren = ({children}) => {
 
   const defaultProps = useMemo(() => ({
     theme,
-      setTheme
+    setTheme
   }), [theme]);
 
   return (
