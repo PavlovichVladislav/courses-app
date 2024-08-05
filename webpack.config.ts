@@ -8,7 +8,7 @@ const paths: BuildPaths = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: path.resolve(__dirname, 'build'),
     html: path.resolve(__dirname, 'public' , 'index.html'),
-    workDir: path.resolve(__dirname, 'src'),
+    src: path.resolve(__dirname, 'src'),
 }
 
 export default (env: BuildEnv): webpack.Configuration  => {

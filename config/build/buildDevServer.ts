@@ -1,12 +1,15 @@
-import { DevServerSettings } from './types/config';
+import { BuildSettings } from './types/config';
 import { Configuration as DevConfig } from 'webpack-dev-server';
 
-export const buildDevServer = (settings: DevServerSettings): DevConfig => {
-  const { port, workDir } = settings
+export const buildDevServer = (settings: BuildSettings): DevConfig => {
+  const { 
+    port, 
+    paths: { src } 
+  } = settings;
 
   return {
     static: {
-      directory: workDir,
+      directory: src,
     },
     compress: true,
     port,

@@ -9,13 +9,12 @@ import { buildDevServer } from './buildDevServer';
 export const buildWebpackConfig = (settings: BuildSettings): webpack.Configuration => {
   const { 
     mode,
-    paths: { entry, output, html, workDir },
-    port,
+    paths: { entry, output, html },
     isDev
   } = settings
 
   return {
-    devServer: isDev ? buildDevServer({port, workDir}) : undefined,
+    devServer: isDev ? buildDevServer(settings) : undefined,
     mode: mode,
     entry,
     output: {
@@ -27,7 +26,7 @@ export const buildWebpackConfig = (settings: BuildSettings): webpack.Configurati
     module: {
       rules: buildLoaders({isDev}),
     },
-    resolve: buildResolve(),
+    resolve: buildResolve(settings),
     plugins: buildPlugins(html),
   } as webpack.Configuration;
 }
