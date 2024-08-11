@@ -1,13 +1,18 @@
 
 type conditionalClasses = Record<string, string | boolean>
 
-export const classNames = (mainClass: string, conditionalClasses: conditionalClasses, additionalClasses: string[]): string => {
+export const classNames = (
+  mainClass: string, 
+  conditionalClasses: conditionalClasses = {}, 
+  additionalClasses: string[] = []
+): string => {
+  console.log(mainClass);
 
-  return [
+  return ([
     mainClass,
     ...Object.entries(conditionalClasses)
-      .filter(([_, condition]) => Boolean(condition))
-      .map(([className]) => className),
-    ...additionalClasses,
-  ].join(' ')
+    .filter(([_, condition]) => Boolean(condition))
+    .map(([className]) => className),
+  ...additionalClasses.filter(Boolean),
+  ].join(' '))
 }
