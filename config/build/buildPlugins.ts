@@ -1,11 +1,13 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BuildSettings } from './types/config';
+import CopyPlugin from 'copy-webpack-plugin';
 
-export const buildPlugins = (templatePath: string): webpack.WebpackPluginInstance[] => {
+export const buildPlugins = (settings: BuildSettings): webpack.WebpackPluginInstance[] => {
     return [
         new HtmlWebpackPlugin({
-          template: templatePath
+          template: settings.paths.html
         }),
         new webpack.ProgressPlugin({
           activeModules: false,
@@ -20,6 +22,14 @@ export const buildPlugins = (templatePath: string): webpack.WebpackPluginInstanc
         new MiniCssExtractPlugin({
           filename: 'css/[name].[contenthash:8].css',
           chunkFilename: "css/[id].[contenthash:8].css"
+        }),
+        new webpack.DefinePlugin({
+          IS_DEV: settings.isDev,
+        }),
+        new CopyPlugin({
+          patterns: [
+            { from: "./public/locales", to: "locales" },
+          ]
         }),
     ]
 }

@@ -6,8 +6,6 @@ export const classNames = (
   conditionalClasses: conditionalClasses = {}, 
   additionalClasses: string[] = []
 ): string => {
-  console.log(mainClass);
-
   return ([
     mainClass,
     ...Object.entries(conditionalClasses)

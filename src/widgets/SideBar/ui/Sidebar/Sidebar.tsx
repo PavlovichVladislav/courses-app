@@ -8,8 +8,6 @@ interface SideBarProps {
   className?: string
 }
 
-console.log(styles.close);
-
 export const SideBar = ({ className }: SideBarProps) => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
 

@@ -34,3 +34,5 @@ declare module "*.jpeg" {
   const value: any;
   export default value;
 }
+
+declare var IS_DEV: boolean;
