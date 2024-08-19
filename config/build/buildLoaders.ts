@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshTypeScript from 'react-refresh-typescript'
 
 interface BuildLoadersOptions {
   isDev: boolean;
@@ -29,11 +30,11 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
     ],
   }
 
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+  // const typescriptLoader = {
+  //   test: /\.tsx?$/,
+  //   use: 'ts-loader',
+  //   exclude: /node_modules/,
+  // };
 
   const svgLoader = {
     test: /\.svg$/,
@@ -49,10 +50,27 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
     ],
   }
 
+  const refreshLoader = {
+    test: /\.[jt]sx?$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: require.resolve('ts-loader'),
+        options: {
+          getCustomTransformers: () => ({
+            before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+          }),
+          transpileOnly: isDev,
+        },
+      },
+    ],
+  };
+
   return [
-    typescriptLoader,
+    // typescriptLoader,
     styleLoaders,
     svgLoader,
-    fileLoader
+    fileLoader,
+    refreshLoader
   ]
 }

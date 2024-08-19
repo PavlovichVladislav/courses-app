@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildSettings } from './types/config';
 import CopyPlugin from 'copy-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 export const buildPlugins = (settings: BuildSettings): webpack.WebpackPluginInstance[] => {
     return [
@@ -31,5 +32,7 @@ export const buildPlugins = (settings: BuildSettings): webpack.WebpackPluginInst
             { from: "./public/locales", to: "locales" },
           ]
         }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin()
     ]
 }

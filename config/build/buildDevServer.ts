@@ -11,6 +11,7 @@ export const buildDevServer = (settings: BuildSettings): DevConfig => {
     static: {
       directory: src,
     },
+    hot: true,
     compress: true,
     port,
     historyApiFallback: true,
