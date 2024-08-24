@@ -1,22 +1,21 @@
-import webpack from 'webpack';
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from 'react-refresh-typescript'
+import webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 interface BuildLoadersOptions {
-  isDev: boolean;
+  isDev: boolean
 }
 
 export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[] => {
-  const { isDev } = options;
+  const { isDev } = options
 
   const styleLoaders = {
     // can worrk with css, sass, scss
     test: /\.(s)?[ac]ss$/i,
     use: [
-      isDev ? 'style-loader': MiniCssExtractPlugin.loader,
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           modules: {
             auto: /.module.(s)?css/i,
@@ -26,8 +25,8 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
         },
       },
       // Compiles Sass to CSS
-      "sass-loader",
-    ],
+      'sass-loader'
+    ]
   }
 
   const typescriptLoader = {
@@ -77,12 +76,12 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
         ],
         plugins: [
           [
-            "i18next-extract", 
+            'i18next-extract',
             {
-              "locales": ['ru', 'en'],
-              "keyAsDefaultValue": ['ru'],
-              "nsSeparator": "~",
-              "keyAsDefaultValueForDerivedKeys": true
+              locales: ['ru', 'en'],
+              keyAsDefaultValue: ['ru'],
+              nsSeparator: '~',
+              keyAsDefaultValueForDerivedKeys: true
             }
           ],
         ]

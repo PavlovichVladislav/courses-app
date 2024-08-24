@@ -1,21 +1,22 @@
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames'
 
-import styles from './AppButton.module.scss';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import styles from './AppButton.module.scss'
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 
 export const enum AppButtonTheme {
   CLEAR = 'clear',
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: ReactNode;
-  theme?: AppButtonTheme;
+  className?: string
+  children: ReactNode
+  theme?: AppButtonTheme
 }
 
-export const AppButton = ({ className, children, theme, ...otherProps }: AppButtonProps) => {
+export const AppButton: FC = ({ className = '', children, theme = AppButtonTheme.CLEAR, ...otherProps }: AppButtonProps) => {
   return (
-    <button 
+    <button
+      type="button"
       className={classNames(styles.appButton, {}, [className, styles[theme]])}
       {...otherProps}
     >

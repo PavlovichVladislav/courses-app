@@ -1,32 +1,32 @@
-import webpack from 'webpack';
+import webpack from 'webpack'
 
-import { buildPlugins } from "./buildPlugins";
-import { buildResolve } from "./buildResolve";
-import { buildLoaders } from './buildLoaders';
-import { BuildSettings } from './types/config';
-import { buildDevServer } from './buildDevServer';
+import { buildPlugins } from './buildPlugins'
+import { buildResolve } from './buildResolve'
+import { buildLoaders } from './buildLoaders'
+import { BuildSettings } from './types/config'
+import { buildDevServer } from './buildDevServer'
 
 export const buildWebpackConfig = (settings: BuildSettings): webpack.Configuration => {
-  const { 
+  const {
     mode,
     paths: { entry, output },
-    isDev
+    isDev,
   } = settings
 
   return {
     devServer: isDev ? buildDevServer(settings) : undefined,
-    mode: mode,
+    mode,
     entry,
     output: {
       filename: '[name].[contenthash].js',
       path: output,
-      clean: true
+      clean: true,
     },
     devtool: isDev ? 'inline-source-map' : undefined,
     module: {
-      rules: buildLoaders({isDev}),
+      rules: buildLoaders({ isDev })
     },
     resolve: buildResolve(settings),
-    plugins: buildPlugins(settings),
-  } as webpack.Configuration;
+    plugins: buildPlugins(settings)
+  } as webpack.Configuration
 }
