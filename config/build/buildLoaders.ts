@@ -1,12 +1,12 @@
-import webpack from 'webpack'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 interface BuildLoadersOptions {
-  isDev: boolean
+  isDev: boolean;
 }
 
 export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[] => {
-  const { isDev } = options
+  const { isDev } = options;
 
   const styleLoaders = {
     // can worrk with css, sass, scss
@@ -20,14 +20,14 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
           modules: {
             auto: /.module.(s)?css/i,
             namedExport: false,
-            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
           },
         },
       },
       // Compiles Sass to CSS
-      'sass-loader'
-    ]
-  }
+      'sass-loader',
+    ],
+  };
 
   const typescriptLoader = {
     test: /\.tsx?$/,
@@ -38,7 +38,7 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
-  }
+  };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif)$/i,
@@ -47,7 +47,7 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
         loader: 'file-loader',
       },
     ],
-  }
+  };
 
   // const refreshLoader = {
   //   test: /\.[jt]sx?$/,
@@ -72,7 +72,7 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
       loader: 'babel-loader',
       options: {
         presets: [
-          ['@babel/preset-env']
+          ['@babel/preset-env'],
         ],
         plugins: [
           [
@@ -81,13 +81,13 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
               locales: ['ru', 'en'],
               keyAsDefaultValue: ['ru'],
               nsSeparator: '~',
-              keyAsDefaultValueForDerivedKeys: true
-            }
+              keyAsDefaultValueForDerivedKeys: true,
+            },
           ],
-        ]
-      }
-    }
-  }
+        ],
+      },
+    },
+  };
 
   return [
     svgLoader,
@@ -95,6 +95,6 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
     styleLoaders,
     babelLoader,
     typescriptLoader,
-    // refreshLoader, 
-  ]
-}
+    // refreshLoader,
+  ];
+};
