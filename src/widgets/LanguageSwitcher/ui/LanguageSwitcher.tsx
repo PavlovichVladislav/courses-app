@@ -24,6 +24,7 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
       theme={AppButtonTheme.CLEAR}
     >
       {t('Язык')}
+      log
     </AppButton>
   )
 };
