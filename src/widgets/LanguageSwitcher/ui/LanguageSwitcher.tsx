@@ -10,11 +10,11 @@ interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const toggleLanguage = (): void => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en')
-  }
+    i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
+  };
 
   return (
     <AppButton
@@ -24,7 +24,6 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
       theme={AppButtonTheme.CLEAR}
     >
       {t('Язык')}
-      log
     </AppButton>
-  )
-};
+  );
+}

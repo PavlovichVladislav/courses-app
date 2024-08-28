@@ -69,6 +69,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -106,6 +107,8 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'linebreak-style': "off",
+    'max-len': ['error', {ignoreComments: true}]
   },
   globals: {
     IS_DEV: true,
