@@ -15,6 +15,6 @@
 }
 
 .page-wrapper {
-  padding: 20px;
+  padding: var(--page-padding);
   flex-grow: 1;
 }
