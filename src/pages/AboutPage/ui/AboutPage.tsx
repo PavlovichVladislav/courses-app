@@ -7,9 +7,12 @@ function AboutPage() {
 
   return (
     <div>
-      <button 
-        type="button" 
-        onClick={() => setCounter((value) => value += 1)}>upd count</button>
+      <button
+        type="button"
+        onClick={() => setCounter((value) => value += 1)}
+      >
+        upd count
+      </button>
       {counter}
       {t('Информация')}
     </div>

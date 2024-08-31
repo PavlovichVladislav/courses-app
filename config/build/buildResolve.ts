@@ -1,7 +1,9 @@
 import webpack from 'webpack';
 import { BuildSettings } from './types/config';
 
-export const buildResolve = (settings: BuildSettings): webpack.ResolveOptions => ({
+export const buildResolve = (
+  settings: BuildSettings,
+): webpack.ResolveOptions => ({
   extensions: ['.tsx', '.ts', '.js'],
   preferAbsolute: true,
   modules: [settings.paths.src, 'node_modules'],

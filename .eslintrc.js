@@ -93,7 +93,9 @@ module.exports = {
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
     indent: [2, 2],
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+    'react/jsx-filename-extension': [
+      2, { extensions: ['.js', '.jsx', '.tsx'] },
+    ],
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'react/require-default-props': 'off',
@@ -105,10 +107,22 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
-    'linebreak-style': "off",
-    'max-len': ['error', {ignoreComments: true}]
+    'linebreak-style': 'off',
+    'max-len': ['error', { ignoreComments: true }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        caughtErrors: 'all',
+        caughtErrorsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
+    "no-return-assign": 'off'
   },
   globals: {
     IS_DEV: true,

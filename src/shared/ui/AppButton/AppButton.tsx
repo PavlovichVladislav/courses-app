@@ -8,14 +8,14 @@ export const enum AppButtonTheme {
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
+  className: string;
   children: ReactNode;
   theme?: AppButtonTheme;
 }
 
-export const AppButton: FC = ({
+export const AppButton: FC<AppButtonProps> = ({
   className = '', children, theme = AppButtonTheme.CLEAR, ...otherProps
-}: AppButtonProps) => (
+}) => (
   <button
     type="button"
     className={classNames(styles.appButton, {}, [className, styles[theme]])}

@@ -6,7 +6,9 @@ import { buildLoaders } from './buildLoaders';
 import { BuildSettings } from './types/config';
 import { buildDevServer } from './buildDevServer';
 
-export const buildWebpackConfig = (settings: BuildSettings): webpack.Configuration => {
+export const buildWebpackConfig = (
+  settings: BuildSettings,
+): webpack.Configuration => {
   const {
     mode,
     paths: { entry, output },

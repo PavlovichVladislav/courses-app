@@ -5,7 +5,9 @@ interface BuildLoadersOptions {
   isDev: boolean;
 }
 
-export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[] => {
+export const buildLoaders = (
+  options: BuildLoadersOptions,
+): webpack.RuleSetRule[] => {
   const { isDev } = options;
 
   const styleLoaders = {
@@ -20,7 +22,9 @@ export const buildLoaders = (options: BuildLoadersOptions): webpack.RuleSetRule[
           modules: {
             auto: /.module.(s)?css/i,
             namedExport: false,
-            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+            localIdentName: isDev
+              ? '[path][name]__[local]--[hash:base64:5]'
+              : '[hash:base64:8]',
           },
         },
       },

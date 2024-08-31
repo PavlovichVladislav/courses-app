@@ -5,7 +5,9 @@ import CopyPlugin from 'copy-webpack-plugin';
 import { BuildSettings } from './types/config';
 // import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-export const buildPlugins = (settings: BuildSettings): webpack.WebpackPluginInstance[] => [
+export const buildPlugins = (
+  settings: BuildSettings,
+): webpack.WebpackPluginInstance[] => [
   new HtmlWebpackPlugin({
     template: settings.paths.html,
   }),
