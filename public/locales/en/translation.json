@@ -3,5 +3,7 @@
   "Главная страница": "root page",
   "Страница информации": "about page",
   "Язык": "English",
-  "Страница не найдена": "Not found page"
+  "Страница не найдена": "Not found page",
+  "Произошла ошибка": "Something went wrong",
+  "Перезагрузить": "Reload"
 }

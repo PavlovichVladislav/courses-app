@@ -8,7 +8,7 @@ export const enum AppButtonTheme {
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className: string;
+  className?: string;
   children: ReactNode;
   theme?: AppButtonTheme;
 }
