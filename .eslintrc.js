@@ -122,7 +122,7 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
-    "no-return-assign": 'off'
+    'no-return-assign': 'off',
   },
   globals: {
     IS_DEV: true,
