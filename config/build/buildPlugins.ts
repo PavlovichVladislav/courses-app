@@ -36,7 +36,7 @@ export const buildPlugins = (
   }),
   new webpack.HotModuleReplacementPlugin(),
   new BundleAnalyzerPlugin({
-    
+    openAnalyzer: false,
   }),
   // new ReactRefreshWebpackPlugin()
 ];
