@@ -109,7 +109,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'linebreak-style': 'off',
-    'max-len': ['error', { ignoreComments: true, length: 100 }],
+    'max-len': ['error', { ignoreComments: true, code: 100 }],
     '@typescript-eslint/no-unused-vars': [
       'error',
       {

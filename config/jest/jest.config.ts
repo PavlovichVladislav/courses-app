@@ -38,6 +38,7 @@ const config: Config = {
 
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
+    '\\.svg$': '<rootDir>/config/jest/mocks/emptyComponent.tsx',
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,

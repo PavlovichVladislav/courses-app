@@ -1,8 +1,8 @@
 import { FC, Suspense } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Navbar } from 'widgets/Navbar';
-import { SideBar } from 'widgets/SideBar';
+import { Sidebar } from 'widgets/SideBar';
 import { AppRouter } from './providers/router';
 
 import './styles/index.scss';
@@ -15,7 +15,7 @@ const App: FC = () => {
       <Suspense fallback="">
         <Navbar />
         <div className="content-page">
-          <SideBar />
+          <Sidebar />
           <AppRouter />
         </div>
       </Suspense>
