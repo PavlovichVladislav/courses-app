@@ -100,7 +100,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-props-no-spreading': 'warn',
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': 'off',
     'no-shadow': 'off',
     'import/extensions': 'off',
@@ -123,8 +123,18 @@ module.exports = {
       },
     ],
     'no-return-assign': 'off',
+    'no-param-reassign': 'off',
+    "react/prop-types": "off"
   },
   globals: {
     IS_DEV: true,
   },
+  overrides: [
+    {
+      "files": ["*.test.{ts,tsx}"],
+      "rules": {
+        'i18next/no-literal-string': 'off'
+      }
+    }
+  ]
 };

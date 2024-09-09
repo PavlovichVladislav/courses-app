@@ -11,8 +11,8 @@ describe('Sidebar test', () => {
   test('toggle Sidebar', () => {
     renderWithTranslation(<Sidebar />);
     expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
-    
-    fireEvent.click(screen.getByTestId('toggle'))
+
+    fireEvent.click(screen.getByTestId('toggle'));
     expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed');
   });
 });

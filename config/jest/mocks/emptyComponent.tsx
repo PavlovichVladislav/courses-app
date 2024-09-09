@@ -1,7 +1,5 @@
-export const empyComponent = () => {
-  return (
-    <div/>
-  )
-}
+export const empyComponent = () => (
+  <div />
+);
 
 export default empyComponent;

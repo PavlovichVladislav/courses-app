@@ -11,7 +11,7 @@ function AboutPage() {
         type="button"
         onClick={() => setCounter((value) => value += 1)}
       >
-        upd count
+        {t('upd count')}
       </button>
       {counter}
       {t('Информация')}
