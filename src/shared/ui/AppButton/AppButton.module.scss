@@ -2,8 +2,19 @@
   cursor: pointer;
 }
 
+.primary {
+  background: var(--secondary-color);
+  color: 1px solid var(--primary-color);
+}
+
 .clear {
   border: none;
   background: none;
 }
 
+.outline {
+  padding: 15px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
+}

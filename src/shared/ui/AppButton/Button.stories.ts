@@ -2,12 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { AppButton, AppButtonTheme } from './AppButton';
 
+import 'app/styles/index.scss';
+
 const meta = {
   title: 'shared/AppButton',
   component: AppButton,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  // },
   args: { onClick: fn() },
 } satisfies Meta<typeof AppButton>;
 
@@ -16,13 +18,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Text'
+    children: 'Primary',
+    theme: AppButtonTheme.PRIMARY,
   },
 };
 
 export const Clear: Story = {
   args: {
-    children: 'Text',
-    theme: AppButtonTheme.CLEAR
+    children: 'CLEAR',
+    theme: AppButtonTheme.CLEAR,
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    children: 'OUTLINE',
+    theme: AppButtonTheme.OUTLINE,
   },
 };

@@ -4,7 +4,9 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import styles from './AppButton.module.scss';
 
 export const enum AppButtonTheme {
+  PRIMARY = 'primary',
   CLEAR = 'clear',
+  OUTLINE = 'outline'
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,7 +16,7 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const AppButton: FC<AppButtonProps> = ({
-  className = '', children, theme = AppButtonTheme.CLEAR, ...otherProps
+  className = '', children, theme = AppButtonTheme.PRIMARY, ...otherProps
 }) => (
   <button
     type="button"

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 
 function AboutPage() {
   const { t } = useTranslation('about');
@@ -7,12 +8,12 @@ function AboutPage() {
 
   return (
     <div>
-      <button
+      <AppButton
         type="button"
         onClick={() => setCounter((value) => value += 1)}
       >
         {t('upd count')}
-      </button>
+      </AppButton>
       {counter}
       {t('Информация')}
     </div>
