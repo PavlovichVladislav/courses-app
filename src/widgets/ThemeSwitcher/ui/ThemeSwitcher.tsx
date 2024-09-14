@@ -6,11 +6,11 @@ import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import ThemeDarkSvg from '../assets/icons/theme-dark.svg';
 import ThemeLightSvg from '../assets/icons/theme-light.svg';
 
-interface ThemeButtonProps {
+interface ThemeSwitcherProps {
   className?: string;
 }
 
-export const ThemeButton = ({ className = '' }: ThemeButtonProps) => {
+export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
 
   return (

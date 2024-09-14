@@ -15,7 +15,6 @@ export const Navbar = ({ className }: NavbarProps) => {
     <div className={classNames(styles.navbar, {}, [className])}>
       <div className={styles.links}>
         <AppLink theme={AppLinkTheme.INVERTED} to="/">
-
           {t('Главная страница')}
         </AppLink>
         <AppLink theme={AppLinkTheme.INVERTED} to="/about">
