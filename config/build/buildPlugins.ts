@@ -8,35 +8,42 @@ import { BuildSettings } from './types/config';
 
 export const buildPlugins = (
   settings: BuildSettings,
-): webpack.WebpackPluginInstance[] => [
-  new HtmlWebpackPlugin({
-    template: settings.paths.html,
-  }),
-  new webpack.ProgressPlugin({
-    activeModules: false,
-    entries: true,
-    modules: true,
-    modulesCount: 5000,
-    profile: false,
-    dependencies: true,
-    dependenciesCount: 10000,
-    percentBy: null,
-  }),
-  new MiniCssExtractPlugin({
-    filename: 'css/[name].[contenthash:8].css',
-    chunkFilename: 'css/[id].[contenthash:8].css',
-  }),
-  new webpack.DefinePlugin({
-    IS_DEV: settings.isDev,
-  }),
-  new CopyPlugin({
-    patterns: [
-      { from: './public/locales', to: 'locales' },
-    ],
-  }),
-  new webpack.HotModuleReplacementPlugin(),
-  new BundleAnalyzerPlugin({
-    openAnalyzer: false,
-  }),
-  // new ReactRefreshWebpackPlugin()
-];
+): webpack.WebpackPluginInstance[] => {
+  const plugins = [
+    new HtmlWebpackPlugin({
+      template: settings.paths.html,
+    }),
+    new webpack.ProgressPlugin({
+      activeModules: false,
+      entries: true,
+      modules: true,
+      modulesCount: 5000,
+      profile: false,
+      dependencies: true,
+      dependenciesCount: 10000,
+      percentBy: null,
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[id].[contenthash:8].css',
+    }),
+    new webpack.DefinePlugin({
+      IS_DEV: settings.isDev,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './public/locales', to: 'locales' },
+      ],
+    }),
+    // new ReactRefreshWebpackPlugin()
+  ];
+
+  if (settings.isDev) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }));
+  }
+
+  return plugins;
+};
