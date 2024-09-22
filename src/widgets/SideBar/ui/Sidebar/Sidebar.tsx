@@ -27,7 +27,7 @@ export function Sidebar({ className = '' }: SideBarProps) {
           type="button"
           data-testid="toggle"
           onClick={onToggle}
-          theme={AppButtonTheme.BACKGROUND}
+          theme={AppButtonTheme.BACKGROUND_INVERTED}
           square
         >
           {collapsed ? '->' : '<-'}

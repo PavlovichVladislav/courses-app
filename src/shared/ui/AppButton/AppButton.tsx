@@ -11,15 +11,27 @@ export const enum AppButtonTheme {
   BACKGROUND_INVERTED = 'backgroundInverted'
 }
 
+export const enum AppButtonSize {
+  M = 'sizeM',
+  L = 'sizeL',
+  XL = 'sizeXl',
+}
+
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
   theme?: AppButtonTheme;
   square?: boolean;
+  size?: AppButtonSize;
 }
 
 export const AppButton: FC<AppButtonProps> = ({
-  className = '', children, theme = AppButtonTheme.PRIMARY, square, ...otherProps
+  className = '',
+  children,
+  square,
+  theme = AppButtonTheme.PRIMARY,
+  size = AppButtonSize.M,
+  ...otherProps
 }) => {
   const mods = {
     [styles.square]: square,
@@ -28,7 +40,13 @@ export const AppButton: FC<AppButtonProps> = ({
   return (
     <button
       type="button"
-      className={classNames(styles.appButton, mods, [className, styles[theme]])}
+      className={
+        classNames(
+          styles.appButton,
+          mods,
+          [className, styles[theme], styles[size]],
+        )
+      }
       {...otherProps}
     >
       {children}

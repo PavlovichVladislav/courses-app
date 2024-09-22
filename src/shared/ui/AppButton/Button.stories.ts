@@ -2,9 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { AppButton, AppButtonTheme } from './AppButton';
-
-// import 'app/styles/index.scss';
+import { AppButton, AppButtonSize, AppButtonTheme } from './AppButton';
 
 const meta = {
   title: 'shared/AppButton',
@@ -43,6 +41,56 @@ export const OutlineDark: Story = {
   args: {
     children: 'OUTLINE-dark',
     theme: AppButtonTheme.OUTLINE,
+  },
+  decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const Background: Story = {
+  args: {
+    children: 'Background',
+    theme: AppButtonTheme.BACKGROUND,
+  },
+  decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const InvertedBackground: Story = {
+  args: {
+    children: 'Inverted Background',
+    theme: AppButtonTheme.BACKGROUND_INVERTED,
+  },
+  decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const PrimaryM: Story = {
+  args: {
+    children: 'Primary M',
+    theme: AppButtonTheme.PRIMARY,
+    size: AppButtonSize.M,
+  },
+};
+
+export const PrimaryL: Story = {
+  args: {
+    children: 'Primary L',
+    theme: AppButtonTheme.PRIMARY,
+    size: AppButtonSize.L,
+  },
+};
+
+export const PrimaryXL: Story = {
+  args: {
+    children: 'Primary XL',
+    theme: AppButtonTheme.PRIMARY,
+    size: AppButtonSize.XL,
+  },
+};
+
+export const Square: Story = {
+  args: {
+    children: '>',
+    theme: AppButtonTheme.BACKGROUND,
+    size: AppButtonSize.XL,
+    square: true,
   },
   decorators: [ThemeDecorator(Theme.Dark)],
 };

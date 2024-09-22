@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppButton } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonSize } from 'shared/ui/AppButton/AppButton';
 
 function AboutPage() {
   const { t } = useTranslation('about');
@@ -11,6 +11,7 @@ function AboutPage() {
       <AppButton
         type="button"
         onClick={() => setCounter((value) => value += 1)}
+        size={AppButtonSize.XL}
       >
         {t('upd count')}
       </AppButton>
