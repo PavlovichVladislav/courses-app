@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
+import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import styles from './SideBar.module.scss';
 
 interface SideBarProps {
@@ -22,14 +23,16 @@ export function Sidebar({ className = '' }: SideBarProps) {
     >
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <button
+        <AppButton
           type="button"
           data-testid="toggle"
           onClick={onToggle}
+          theme={AppButtonTheme.BACKGROUND}
+          square
         >
           {collapsed ? '->' : '<-'}
-        </button>
-        {!collapsed && <LanguageSwitcher />}
+        </AppButton>
+        <LanguageSwitcher short={collapsed} />
       </div>
     </div>
   );

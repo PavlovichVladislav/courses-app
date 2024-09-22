@@ -7,9 +7,10 @@ import styles from './LanguageSwitcher.module.scss';
 
 interface LanguageSwitcherProps {
   className?: string;
+  short?: boolean;
 }
 
-export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ className = '', short = false }: LanguageSwitcherProps) {
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = (): void => {
@@ -23,7 +24,7 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
       onClick={toggleLanguage}
       theme={AppButtonTheme.CLEAR}
     >
-      {t('Язык')}
+      {t(short ? 'Сокращённый_Язык' : 'Язык')}
     </AppButton>
   );
 }
