@@ -3,8 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 
-import ThemeDarkSvg from '../assets/icons/theme-dark.svg';
-import ThemeLightSvg from '../assets/icons/theme-light.svg';
+import ThemeDarkSvg from 'shared/assets/icons/theme-dark.svg';
+import ThemeLightSvg from 'shared/assets/icons/theme-light.svg';
 
 interface ThemeSwitcherProps {
   className?: string;
