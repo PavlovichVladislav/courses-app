@@ -1,12 +1,7 @@
 .appButton {
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-}
-
-.primary {
-  background: var(--secondary-color);
-  color: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 6px 15px;
 }
 
 .clear {
@@ -23,34 +18,43 @@
 
 .background {
   background: var(--bg-color);
-  color: (--primary-color);
+  color: var(--primary-color);
   border: none;
 }
 
 .backgroundInverted {
   background: var(--inverted-bg-color);
-  color: var(--secondary-color);
+  color: var(--inverted-primary-color);
   border: none;
 }
 
 .square {
-  padding: 0 !important;
-  width: 40px;
-  height: 40px;
-  border-radius: 0;
+  padding: 0;
 }
 
-.appButton.sizeM {
-  padding: 8px 12px;
+.square.sizeM {
+  width: var(--font-line-m);
+  height: var(--font-line-m);
+}
+
+.square.sizeL {
+  width: var(--font-line-l);
+  height: var(--font-line-l);
+}
+
+.square.sizeXl {
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
+}
+
+.sizeM {
   font: var(--font-m);
 }
 
-.appButton.sizeL {
-  padding: 12px 16px;
+.sizeL {
   font: var(--font-l);
 }
 
-.appButton.sizeXl {
-  padding: 16px 20px;
+.sizeXl {
   font: var(--font-xl);
 }

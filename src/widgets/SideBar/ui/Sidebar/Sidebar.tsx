@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
-import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonSize, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import styles from './SideBar.module.scss';
 
 interface SideBarProps {
@@ -27,7 +27,8 @@ export function Sidebar({ className = '' }: SideBarProps) {
           type="button"
           data-testid="toggle"
           onClick={onToggle}
-          theme={AppButtonTheme.BACKGROUND_INVERTED}
+          size={AppButtonSize.L}
+          theme={AppButtonTheme.BACKGROUND}
           square
         >
           {collapsed ? '->' : '<-'}

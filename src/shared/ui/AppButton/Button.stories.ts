@@ -19,7 +19,6 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     children: 'Primary',
-    theme: AppButtonTheme.PRIMARY,
   },
 };
 
@@ -64,15 +63,12 @@ export const InvertedBackground: Story = {
 export const PrimaryM: Story = {
   args: {
     children: 'Primary M',
-    theme: AppButtonTheme.PRIMARY,
-    size: AppButtonSize.M,
   },
 };
 
 export const PrimaryL: Story = {
   args: {
     children: 'Primary L',
-    theme: AppButtonTheme.PRIMARY,
     size: AppButtonSize.L,
   },
 };
@@ -80,12 +76,30 @@ export const PrimaryL: Story = {
 export const PrimaryXL: Story = {
   args: {
     children: 'Primary XL',
-    theme: AppButtonTheme.PRIMARY,
     size: AppButtonSize.XL,
   },
 };
 
 export const Square: Story = {
+  args: {
+    children: '>',
+    theme: AppButtonTheme.BACKGROUND,
+    square: true,
+  },
+  decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const SquareL: Story = {
+  args: {
+    children: '>',
+    theme: AppButtonTheme.BACKGROUND,
+    size: AppButtonSize.L,
+    square: true,
+  },
+  decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const SquareXL: Story = {
   args: {
     children: '>',
     theme: AppButtonTheme.BACKGROUND,
