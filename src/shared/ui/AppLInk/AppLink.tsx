@@ -13,6 +13,8 @@ interface AppLinkProps extends LinkProps {
   className?: string;
   children?: ReactNode;
   theme?: AppLinkTheme;
+  icon?: ReactNode;
+  collapsed?: boolean;
 }
 
 export const AppLink = ({
@@ -20,13 +22,22 @@ export const AppLink = ({
   className,
   children,
   theme = AppLinkTheme.PRIMARY,
+  icon,
+  collapsed,
   ...otherProps
 }: AppLinkProps) => (
   <Link
     to={to}
-    className={classNames(styles.appLink, {}, [className, styles[theme]])}
+    className={classNames(
+      styles.appLink,
+      { [styles.withIcon]: !!icon },
+      [className, styles[theme]],
+    )}
     {...otherProps}
   >
-    {children}
+    {icon}
+    {!collapsed && (
+      <div className={styles.text}>{children}</div>
+    )}
   </Link>
 );

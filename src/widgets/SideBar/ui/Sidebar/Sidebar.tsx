@@ -30,12 +30,20 @@ export function Sidebar({ className = '' }: SideBarProps) {
       className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}
     >
       <div className={styles.links}>
-        <AppLink theme={AppLinkTheme.INVERTED} to={RoutePath.main}>
-          <MainIcon />
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.main}
+          icon={<MainIcon className={styles.icon} />}
+          collapsed={collapsed}
+        >
           {t('Главная страница')}
         </AppLink>
-        <AppLink theme={AppLinkTheme.INVERTED} to={RoutePath.about}>
-          <HomeIcon />
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.about}
+          icon={<HomeIcon className={styles.icon} />}
+          collapsed={collapsed}
+        >
           {t('Страница информации')}
         </AppLink>
       </div>

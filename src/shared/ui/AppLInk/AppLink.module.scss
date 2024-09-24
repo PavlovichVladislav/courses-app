@@ -9,3 +9,14 @@
 .inverted {
   color: var(--inverted-secondary-color);
 }
+
+.withIcon {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width: 142px;
+}
