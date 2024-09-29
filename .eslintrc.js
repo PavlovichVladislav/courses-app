@@ -120,7 +120,9 @@ module.exports = {
     ],
     'no-return-assign': 'off',
     'no-param-reassign': 'off',
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "arrow-body-style": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
   },
   globals: {
     IS_DEV: true,
