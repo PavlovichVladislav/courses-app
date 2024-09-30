@@ -83,28 +83,28 @@ export const PrimaryXL: Story = {
 export const Square: Story = {
   args: {
     children: '>',
-    theme: AppButtonTheme.BACKGROUND,
+    theme: AppButtonTheme.BACKGROUND_INVERTED,
     square: true,
   },
-  decorators: [ThemeDecorator(Theme.Dark)],
+  decorators: [ThemeDecorator(Theme.Light)],
 };
 
 export const SquareL: Story = {
   args: {
     children: '>',
-    theme: AppButtonTheme.BACKGROUND,
+    theme: AppButtonTheme.BACKGROUND_INVERTED,
     size: AppButtonSize.L,
     square: true,
   },
-  decorators: [ThemeDecorator(Theme.Dark)],
+  decorators: [ThemeDecorator(Theme.Light)],
 };
 
 export const SquareXL: Story = {
   args: {
     children: '>',
-    theme: AppButtonTheme.BACKGROUND,
+    theme: AppButtonTheme.BACKGROUND_INVERTED,
     size: AppButtonSize.XL,
     square: true,
   },
-  decorators: [ThemeDecorator(Theme.Dark)],
+  decorators: [ThemeDecorator(Theme.Light)],
 };
