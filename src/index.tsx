@@ -7,6 +7,8 @@ import 'shared/config/i18/i18n';
 import { ErrorBoundary } from 'app/providers/ErrouBoundary';
 import { Suspense } from 'react';
 
+import './app/styles/index.scss';
+
 const root = createRoot(document.getElementById('root'));
 
 root.render(

@@ -5,8 +5,6 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/SideBar';
 import { AppRouter } from './providers/router';
 
-import './styles/index.scss';
-
 const App: FC = () => {
   const { theme } = useTheme();
 

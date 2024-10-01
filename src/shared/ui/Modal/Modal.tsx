@@ -4,6 +4,7 @@ import {
 } from 'react';
 
 import styles from './Modal.module.scss';
+import { Portal } from 'shared/ui/Portal/Portal';
 
 interface ModalProps {
   className?: string;
@@ -53,12 +54,14 @@ export const Modal = ({
   };
 
   return (
-    <div className={classNames(styles.modal, styleMods, [className])}>
-      <div className={styles.overlay} onClick={closeHandler}>
-        <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-          {children}
+    <Portal element={document.getElementById('root')}>
+      <div className={classNames(styles.modal, styleMods, [className])}>
+        <div className={styles.overlay} onClick={closeHandler}>
+          <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </Portal>
   );
 };
