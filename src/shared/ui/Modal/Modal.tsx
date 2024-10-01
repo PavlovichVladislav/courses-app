@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import {
+  ReactNode, useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import styles from './Modal.module.scss';
 
@@ -12,34 +14,48 @@ interface ModalProps {
 
 const MODAL_CLOSE_DELAY = 500;
 
-export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
+export const Modal = ({
+  className, children, isOpen, onClose,
+}: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const closeHandler = () => {
+  const closeHandler = useCallback(() => {
     setIsClosing(true);
 
     timerRef.current = setTimeout(() => {
       onClose();
       setIsClosing(false);
-    }, MODAL_CLOSE_DELAY)
-  }
+    }, MODAL_CLOSE_DELAY);
+  }, [onClose]);
+
+  const onEscPress = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closeHandler();
+    }
+  }, [closeHandler]);
 
   useEffect(() => {
+    if (isOpen) {
+      window.addEventListener('keydown', onEscPress);
+      return;
+    }
+
+    window.removeEventListener('keydown', onEscPress);
     return () => {
       clearInterval(timerRef.current);
-    }
-  }, [])
+    };
+  }, [isOpen, onEscPress]);
 
   const styleMods = {
     [styles.open]: isOpen,
-    [styles.isClosing]: isClosing
-  }
+    [styles.isClosing]: isClosing,
+  };
 
   return (
     <div className={classNames(styles.modal, styleMods, [className])}>
       <div className={styles.overlay} onClick={closeHandler}>
-        <div className={styles.content} onClick={e => e.stopPropagation()}>
+        <div className={styles.content} onClick={(e) => e.stopPropagation()}>
           {children}
         </div>
       </div>

@@ -84,6 +84,7 @@ module.exports = {
     'react',
     '@typescript-eslint',
     'i18next',
+    'react-hooks',
   ],
   rules: {
     'react/jsx-indent': [2, 2],
@@ -120,19 +121,23 @@ module.exports = {
     ],
     'no-return-assign': 'off',
     'no-param-reassign': 'off',
-    "react/prop-types": "off",
-    "arrow-body-style": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
+    'react/prop-types': 'off',
+    'arrow-body-style': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'consistent-return': 'off',
   },
   globals: {
     IS_DEV: true,
   },
   overrides: [
     {
-      "files": ["*.test.{ts,tsx}"],
-      "rules": {
-        'i18next/no-literal-string': 'off'
-      }
-    }
-  ]
+      files: ['*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
