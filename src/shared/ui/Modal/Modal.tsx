@@ -3,8 +3,8 @@ import {
   ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 
-import styles from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal/Portal';
+import styles from './Modal.module.scss';
 
 interface ModalProps {
   className?: string;
@@ -54,7 +54,7 @@ export const Modal = ({
   };
 
   return (
-    <Portal element={document.getElementById('root')}>
+    <Portal>
       <div className={classNames(styles.modal, styleMods, [className])}>
         <div className={styles.overlay} onClick={closeHandler}>
           <div className={styles.content} onClick={(e) => e.stopPropagation()}>
