@@ -8,17 +8,20 @@ import { ErrorBoundary } from 'app/providers/ErrouBoundary';
 import { Suspense } from 'react';
 
 import './app/styles/index.scss';
+import { StoreProvider } from 'app/providers/StoreProvider';
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root')!);
 
 root.render(
-  <BrowserRouter>
-    <Suspense>
-      <ErrorBoundary>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </ErrorBoundary>
-    </Suspense>
-  </BrowserRouter>,
+  <StoreProvider>
+    <BrowserRouter>
+      <Suspense>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ErrorBoundary>
+      </Suspense>
+    </BrowserRouter>
+  </StoreProvider>,
 );
