@@ -4,7 +4,7 @@ import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActions } from '../model/slice/counterSlice';
-import { getCounterValue } from '../model/selectors/getCounter/getCounterTest';
+import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
 export const Counter = () => {
   const { t } = useTranslation();
@@ -21,15 +21,15 @@ export const Counter = () => {
 
   return (
     <>
-      <div>
+      <div data-testid="value">
         {t('Значение')}
         {' '}
         =
         {' '}
         {value}
       </div>
-      <AppButton onClick={onInc}>{t('increment')}</AppButton>
-      <AppButton onClick={onDec}>{t('decrement')}</AppButton>
+      <AppButton data-testid="inc-btn" onClick={onInc}>{t('increment')}</AppButton>
+      <AppButton data-testid="dec-btn" onClick={onDec}>{t('decrement')}</AppButton>
     </>
   );
 };
