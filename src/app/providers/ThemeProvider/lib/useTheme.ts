@@ -14,6 +14,7 @@ export const useTheme = (): UseThemeOutput => {
 
     setTheme(newTheme);
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+    document.body.setAttribute('class', newTheme);
   };
 
   return { theme, toggleTheme };
