@@ -31,6 +31,8 @@ export const Modal = ({
   }, [onClose]);
 
   const onEscPress = useCallback((e: KeyboardEvent) => {
+    console.log('click');
+
     if (e.key === 'Escape') {
       closeHandler();
     }
