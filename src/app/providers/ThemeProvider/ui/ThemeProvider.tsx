@@ -15,7 +15,8 @@ const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({ children, in
 
   useEffect(() => {
     document.body.setAttribute('class', theme);
-  }, []);
+    // @to-do переделать
+  }, [theme]);
 
   const defaultProps = useMemo(() => ({
     theme,
