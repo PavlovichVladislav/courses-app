@@ -13,15 +13,15 @@ import { StoreProvider } from 'app/providers/StoreProvider';
 const root = createRoot(document.getElementById('root')!);
 
 root.render(
-  <StoreProvider>
-    <BrowserRouter>
-      <Suspense>
+  <BrowserRouter>
+    <Suspense>
+      <StoreProvider>
         <ErrorBoundary>
           <ThemeProvider>
             <App />
           </ThemeProvider>
         </ErrorBoundary>
-      </Suspense>
-    </BrowserRouter>
-  </StoreProvider>,
+      </StoreProvider>
+    </Suspense>
+  </BrowserRouter>,
 );

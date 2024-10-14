@@ -20,7 +20,8 @@
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "test:ui:json:report": "node scripts/generate-visual-json-report.js",
     "test:ui:visual:report": "npx reg-cli --from .loki/report.json --report .loki/report.html",
-    "test:ui:report": "npm run test:ui:json:report && npm run test:ui:visual:report"
+    "test:ui:report": "npm run test:ui:json:report && npm run test:ui:visual:report",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
