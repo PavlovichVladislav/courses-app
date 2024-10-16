@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { memo } from 'react';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
+import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername';
 import styles from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -26,6 +27,10 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     dispatch(loginActions.setPassword(password));
   };
 
+  const onLoginClick = () => {
+    dispatch(loginByUsername({ password, username }));
+  };
+
   return (
     <div className={classNames(styles.loginForm, {}, [className])}>
       <Input
@@ -39,7 +44,13 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         value={password}
         onChange={onChangePassword}
       />
-      <AppButton className={styles.loginBtn} theme={AppButtonTheme.OUTLINE}>{t('Войти')}</AppButton>
+      <AppButton
+        className={styles.loginBtn}
+        theme={AppButtonTheme.OUTLINE}
+        onClick={onLoginClick}
+      >
+        {t('Войти')}
+      </AppButton>
     </div>
   );
 });

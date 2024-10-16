@@ -1,9 +1,26 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { User } from 'entities/User';
 
-export const loginByUsername = createAsyncThunk(
+interface LoginByUsernameProps {
+  username: string;
+  password: string;
+}
+
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { rejectValue: string }>(
   'login/loginByUsername',
-  async ({login: number, password: string}) => {
-    const response = await userAPI.fetchById(userId);
-    return response.data
+  async (loginData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post<User>('http://localhost:8000/login', loginData);
+
+      if (!response.data) {
+        throw new Error('Empty server response');
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      rejectWithValue(error);
+    }
   },
 );
