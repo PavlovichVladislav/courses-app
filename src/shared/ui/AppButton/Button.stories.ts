@@ -108,3 +108,13 @@ export const SquareXL: Story = {
   },
   decorators: [ThemeDecorator(Theme.Light)],
 };
+
+export const Disabled: Story = {
+  args: {
+    children: 'disabled',
+    theme: AppButtonTheme.BACKGROUND_INVERTED,
+    size: AppButtonSize.XL,
+    disabled: true,
+  },
+  decorators: [ThemeDecorator(Theme.Light)],
+};

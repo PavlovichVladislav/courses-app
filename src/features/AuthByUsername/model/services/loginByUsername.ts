@@ -19,8 +19,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { re
 
       return response.data;
     } catch (error) {
-      console.error(error);
-      rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   },
 );

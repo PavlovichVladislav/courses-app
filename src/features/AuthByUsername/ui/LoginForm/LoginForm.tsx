@@ -3,11 +3,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
-import { memo } from 'react';
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername';
+import { useSelector } from 'react-redux';
+import { memo, useCallback } from 'react';
+import { useAppDispatch } from 'app/providers/StoreProvider';
+import { loginActions } from '../../model/slice/loginSlice';
+import { getLoginState } from '../../model/selectors/getLoginState';
+import { loginByUsername } from '../../model/services/loginByUsername';
 import styles from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -16,8 +17,10 @@ interface LoginFormProps {
 
 export const LoginForm = memo(({ className }: LoginFormProps) => {
   const { t } = useTranslation();
-  const { username, password } = useSelector(getLoginState);
-  const dispatch = useDispatch();
+  const {
+    username, password, isLoading, error,
+  } = useSelector(getLoginState);
+  const dispatch = useAppDispatch();
 
   const onChangeUsername = (username: string) => {
     dispatch(loginActions.setLogin(username));
@@ -27,12 +30,13 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     dispatch(loginActions.setPassword(password));
   };
 
-  const onLoginClick = () => {
+  const onLoginClick = useCallback(() => {
     dispatch(loginByUsername({ password, username }));
-  };
+  }, [dispatch, password, username]);
 
   return (
     <div className={classNames(styles.loginForm, {}, [className])}>
+      {error && <div>{error}</div>}
       <Input
         autoFocus
         placeholder={t('Введите логин')}
@@ -48,6 +52,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         className={styles.loginBtn}
         theme={AppButtonTheme.OUTLINE}
         onClick={onLoginClick}
+        disabled={isLoading}
       >
         {t('Войти')}
       </AppButton>
