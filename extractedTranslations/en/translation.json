@@ -1,4 +1,5 @@
 {
+  "": "",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Consequuntur dignissimos \n        delectus quo corrupti \n        quaerat ut hic illo, officiis voluptas quasi beatae repellendus temporibus aut quam libero similique quibusdam, dolorum ad!": "",
     " Consequuntur dignissimos \n        delectus quo corrupti quaerat ut hic illo, officiis voluptas quasi beatae repellendus \n        temporibus aut quam libero similique quibusdam, dolorum ad!": "",
@@ -11,6 +12,7 @@
   "open modal": "",
   "test text": "",
   "upd count": "",
+  "Аутентификация": "",
   "Введите логин": "",
   "Введите пароль": "",
   "Войти": "",
@@ -20,6 +22,7 @@
   "Главнейшая!": "",
   "Значение": "",
   "Информация": "",
+  "Неверные данные для входа": "",
   "Перезагрузить": "",
   "Пример": "",
   "Произошла ошибка": {
