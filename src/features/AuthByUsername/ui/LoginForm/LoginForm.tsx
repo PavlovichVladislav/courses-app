@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'app/providers/StoreProvider';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { getUserAuthData } from 'entities/User';
 import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';

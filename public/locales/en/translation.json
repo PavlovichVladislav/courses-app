@@ -11,5 +11,6 @@
   "Введите пароль": "Enter password",
   "Войти": "Log in",
   "Неверные данные для входа": "Invalid login details",
-  "Аутентификация": "Authentication"
+  "Аутентификация": "Authentication",
+  "Выйти": "Log out"
 }
