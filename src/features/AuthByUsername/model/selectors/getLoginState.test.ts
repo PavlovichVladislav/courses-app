@@ -1,8 +1,8 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginState } from './getLoginState';
 
-describe('getCounter', () => {
-  test('should return counter state', () => {
+describe('getLoginState', () => {
+  test('should return login state', () => {
     const state: Partial<StateSchema> = {
       login: {
         username: 'name',

@@ -3,15 +3,9 @@ import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator/ThemeDec
 import { Theme } from 'app/providers/ThemeProvider';
 import { Sidebar } from './Sidebar';
 
-// import 'app/styles/index.scss';
-
 const meta = {
   title: 'shared/Sidebar',
   component: Sidebar,
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
-  // args: { onClick: fn() },
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;

@@ -19,7 +19,6 @@ export const Input = memo(({
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
   const inputRef = useRef<HTMLInputElement>();
-
   const onCahneHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
     setCaretPosition(event.target.value.length);
@@ -45,6 +44,7 @@ export const Input = memo(({
       )}
       <div className={styles.carriageWrapper}>
         <input
+          value={value}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={styles.input}
