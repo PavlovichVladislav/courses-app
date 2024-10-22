@@ -3,9 +3,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import { Input } from 'shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { useAppDispatch } from 'app/providers/StoreProvider';
+import { ReduxStoreWithManager, useAppDispatch } from 'app/providers/StoreProvider';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
@@ -13,15 +13,16 @@ import { loginByUsername } from '../../model/services/loginByUsername';
 import styles from './LoginForm.module.scss';
 
 interface LoginFormProps {
-  className?: string
+  className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className }: LoginFormProps) => {
   const { t } = useTranslation();
   const {
     username, password, isLoading, error,
   } = useSelector(getLoginState);
   const dispatch = useAppDispatch();
+  const store = useStore() as ReduxStoreWithManager;
 
   const onChangeUsername = (username: string) => {
     dispatch(loginActions.setLogin(username));
@@ -61,3 +62,5 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;

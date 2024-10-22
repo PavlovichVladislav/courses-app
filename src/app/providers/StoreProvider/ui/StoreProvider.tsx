@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import { createReduxStore } from '../config/store';
-import { StateSchema } from '../types/StateSchema';
+import { StateSchema } from '../config/StateSchema';
 
 interface StoreProviderProps {
   initialState?: StateSchema;

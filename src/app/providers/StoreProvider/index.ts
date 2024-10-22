@@ -1,3 +1,3 @@
 export * from './ui/StoreProvider';
 export * from './config/store';
-export * from './types/StateSchema';
+export * from './config/StateSchema';
