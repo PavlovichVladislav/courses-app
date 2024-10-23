@@ -13,7 +13,7 @@ export const createReduxStore = (initialState?: StateSchema) => {
   const store = configureStore<StateSchema>({
     preloadedState: initialState,
     devTools: IS_DEV,
-    reducer: rootReducers,
+    reducer: reducerManager.reduce,
   }) as ReduxStoreWithManager;
 
   store.reducerManager = reducerManager;
