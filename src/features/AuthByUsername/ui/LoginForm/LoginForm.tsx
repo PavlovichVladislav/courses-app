@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'app/providers/StoreProvider';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { DynamicModuleLoader } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
@@ -16,6 +16,10 @@ import styles from './LoginForm.module.scss';
 interface LoginFormProps {
   className?: string;
 }
+
+const reducersList: ReducersList = {
+  login: loginReducer,
+};
 
 const LoginForm = memo(({ className }: LoginFormProps) => {
   const { t } = useTranslation();
@@ -38,7 +42,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
   }, [dispatch, password, username]);
 
   return (
-    <DynamicModuleLoader reducerName="login" reducer={loginReducer}>
+    <DynamicModuleLoader reducerName="login" reducers={reducersList}>
       <div className={classNames(styles.loginForm, {}, [className])}>
         <Text title={t('Аутентификация')} />
         {error && <Text text={t('Неверные данные для входа')} theme={TextTheme.ERROR} />}

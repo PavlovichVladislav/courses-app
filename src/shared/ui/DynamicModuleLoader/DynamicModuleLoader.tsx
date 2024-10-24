@@ -3,27 +3,34 @@ import { useStore } from 'react-redux';
 import { ReactNode, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
 
+export type ReducersList = Partial<Record<reducersKey, Reducer>>;
+type ReducerListEntry = [reducersKey, Reducer];
+
 interface DynamicModuleLoaderProps {
   reducerName: reducersKey;
-  reducer: Reducer;
+  reducers: ReducersList;
   children: ReactNode;
   removeAfterUnmount?: boolean;
 }
 
 export const DynamicModuleLoader = ({
-  children, reducerName, reducer, removeAfterUnmount = true,
+  children, reducers, removeAfterUnmount = true,
 }: DynamicModuleLoaderProps) => {
   const dispatch = useAppDispatch();
   const store = useStore() as ReduxStoreWithManager;
 
   useEffect(() => {
-    store.reducerManager.add(reducerName, reducer);
-    dispatch({ type: `@INIT ${reducerName} reducer` });
+    Object.entries(reducers).forEach(([reducerName, reducer]: ReducerListEntry) => {
+      store.reducerManager.add(reducerName, reducer);
+      dispatch({ type: `@INIT ${reducerName} reducer` });
+    });
 
     return () => {
       if (removeAfterUnmount) {
-        store.reducerManager.remove(reducerName);
-        dispatch({ type: `@REMOVE ${reducerName} reducer` });
+        Object.entries(reducers).forEach(([reducerName]: ReducerListEntry) => {
+          store.reducerManager.remove(reducerName);
+          dispatch({ type: `@REMOVE ${reducerName} reducer` });
+        });
       }
     };
     // eslint-disable-next-line
