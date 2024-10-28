@@ -1,7 +1,7 @@
 
-# npm run build:prod
-# npm run lint
-# npm run stylelint
-# npm run test:unit
-# npm run sb:build
-# npm run test:ui:ci
+npm run build:prod
+npm run lint
+npm run stylelint
+npm run test:unit
+npm run sb:build
+npm run test:ui:ci

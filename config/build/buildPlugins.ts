@@ -38,12 +38,12 @@ export const buildPlugins = (
     // new ReactRefreshWebpackPlugin()
   ];
 
-  plugins.push(new BundleAnalyzerPlugin({
-    openAnalyzer: false,
-  }));
-
   if (settings.isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
+
+    plugins.push(new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }));
   }
 
   return plugins;
