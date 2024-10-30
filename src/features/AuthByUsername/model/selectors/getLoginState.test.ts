@@ -19,4 +19,14 @@ describe('getLoginState', () => {
       error: undefined,
     });
   });
+
+  test('empty state test', () => {
+    const state: Partial<StateSchema> = {};
+
+    expect(getLoginState(state as StateSchema)).toEqual({
+      isLoading: false,
+      password: '',
+      username: '',
+    });
+  });
 });
