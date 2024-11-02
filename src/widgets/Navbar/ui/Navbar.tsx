@@ -6,7 +6,7 @@ import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
-import { useAppDispatch } from 'app/providers/StoreProvider';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {

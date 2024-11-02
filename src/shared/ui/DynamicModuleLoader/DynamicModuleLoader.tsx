@@ -1,7 +1,8 @@
-import { reducersKey, ReduxStoreWithManager, useAppDispatch } from 'app/providers/StoreProvider';
+import { reducersKey, ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { useStore } from 'react-redux';
 import { ReactNode, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 export type ReducersList = Partial<Record<reducersKey, Reducer>>;
 type ReducerListEntry = [reducersKey, Reducer];

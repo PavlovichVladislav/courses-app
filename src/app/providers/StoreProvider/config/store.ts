@@ -1,6 +1,6 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
-import { ReduxStoreWithManager, StateSchema } from './StateSchema';
+import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export const createReduxStore = (
@@ -18,9 +18,12 @@ export const createReduxStore = (
     preloadedState: initialState,
     devTools: IS_DEV,
     reducer: reducerManager.reduce,
-  }) as ReduxStoreWithManager;
+  });
 
+  // @ts-ignore
   store.reducerManager = reducerManager;
 
   return store;
 };
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

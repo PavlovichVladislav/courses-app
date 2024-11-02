@@ -8,6 +8,7 @@ const meta = {
   title: 'shared/LoginForm',
   component: LoginForm,
   args: {
+    onLogin: () => { },
   },
 } satisfies Meta<typeof LoginForm>;
 
@@ -15,8 +16,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Dark: Story = {
-  args: {
-  },
   decorators: [ThemeDecorator(Theme.Dark), StoreDecorator({
     login: { password: 'password', username: 'login', isLoading: false },
   })],
@@ -29,8 +28,6 @@ export const Light: Story = {
 };
 
 export const withError: Story = {
-  args: {
-  },
   decorators: [ThemeDecorator(Theme.Dark), StoreDecorator({
     login: {
       password: 'password', username: 'login', isLoading: false, error: 'ошибка',
@@ -39,8 +36,6 @@ export const withError: Story = {
 };
 
 export const loading: Story = {
-  args: {
-  },
   decorators: [ThemeDecorator(Theme.Dark), StoreDecorator({
     login: {
       password: 'password', username: 'login', isLoading: true,
