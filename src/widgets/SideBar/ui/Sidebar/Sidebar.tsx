@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
 import { AppButton, AppButtonSize, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLInk/AppLink';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import MainIcon from 'shared/assets/icons/home.svg';
 import HomeIcon from 'shared/assets/icons/info.svg';
 
 import styles from './SideBar.module.scss';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SideBarProps {
   className?: string;
@@ -30,22 +30,22 @@ export function Sidebar({ className = '' }: SideBarProps) {
       className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}
     >
       <div className={styles.links}>
-        <AppLink
-          theme={AppLinkTheme.INVERTED}
-          to={RoutePath.main}
-          icon={<MainIcon className={styles.icon} />}
+        <SidebarItem
+          item={{
+            path: RoutePath.main,
+            icon: <MainIcon className={styles.icon} />,
+            text: t('Главная страница'),
+          }}
           collapsed={collapsed}
-        >
-          {t('Главная страница')}
-        </AppLink>
-        <AppLink
-          theme={AppLinkTheme.INVERTED}
-          to={RoutePath.about}
-          icon={<HomeIcon className={styles.icon} />}
+        />
+        <SidebarItem
+          item={{
+            path: RoutePath.about,
+            icon: <HomeIcon className={styles.icon} />,
+            text: t('Страница информации'),
+          }}
           collapsed={collapsed}
-        >
-          {t('Страница информации')}
-        </AppLink>
+        />
       </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
