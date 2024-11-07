@@ -12,5 +12,6 @@
   "Войти": "Log in",
   "Неверные данные для входа": "Invalid login details",
   "Аутентификация": "Authentication",
-  "Выйти": "Log out"
+  "Выйти": "Log out",
+  "Профиль": "Profile"
 }

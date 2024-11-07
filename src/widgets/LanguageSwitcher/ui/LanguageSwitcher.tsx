@@ -3,6 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
 
+import { memo } from 'react';
 import styles from './LanguageSwitcher.module.scss';
 
 interface LanguageSwitcherProps {
@@ -10,7 +11,7 @@ interface LanguageSwitcherProps {
   short?: boolean;
 }
 
-export function LanguageSwitcher({ className = '', short = false }: LanguageSwitcherProps) {
+export const LanguageSwitcher = memo(({ className = '', short = false }: LanguageSwitcherProps) => {
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = (): void => {
@@ -27,4 +28,4 @@ export function LanguageSwitcher({ className = '', short = false }: LanguageSwit
       {t(short ? 'Сокращённый_Язык' : 'Язык')}
     </AppButton>
   );
-}
+});
