@@ -18,7 +18,6 @@ export function Sidebar({ className = '' }: SideBarProps) {
   const onToggle = async () => {
     setCollapsed((collapsed) => !collapsed);
   };
-  const [set, setSet] = useState(0);
 
   const renderSidebarItemList = useMemo(() => (
     <div className={styles.links}>
@@ -39,7 +38,6 @@ export function Sidebar({ className = '' }: SideBarProps) {
     >
       {renderSidebarItemList}
       <div className={styles.switchers}>
-        <button type="button" onClick={() => setSet(set + 1)}>{set}</button>
         <ThemeSwitcher />
         <AppButton
           type="button"
