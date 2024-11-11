@@ -36,3 +36,4 @@ declare module '*.jpeg' {
 }
 
 declare let IS_DEV: boolean;
+declare let __API__: string;

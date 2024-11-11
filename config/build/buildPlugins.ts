@@ -29,6 +29,7 @@ export const buildPlugins = (
     }),
     new webpack.DefinePlugin({
       IS_DEV: settings.isDev,
+      __API__: settings.apiUrl,
     }),
     new CopyPlugin({
       patterns: [

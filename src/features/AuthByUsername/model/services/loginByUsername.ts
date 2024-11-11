@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { ThunkConfig } from 'app/providers/StoreProvider';
 import { User, userActions } from 'entities/User';
 import { USER_LS_KEY } from 'shared/const/localStorage';
 
@@ -8,11 +8,13 @@ interface LoginByUsernameProps {
   password: string;
 }
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { rejectValue: string }>(
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
   'login/loginByUsername',
-  async (loginData, { rejectWithValue, dispatch }) => {
+  async (loginData, { rejectWithValue, dispatch, extra }) => {
     try {
-      const response = await axios.post<User>('http://localhost:8000/login', loginData);
+      const { api } = extra;
+
+      const response = await api.post<User>('/login', loginData);
 
       if (!response.data) {
         throw new Error('Empty server response');
