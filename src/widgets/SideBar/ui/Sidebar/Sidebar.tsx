@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useMemo, useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
-import { AppButton, AppButtonSize, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 
 import { sidebarItemsList } from 'widgets/SideBar/model/item';
 import styles from './SideBar.module.scss';
@@ -39,16 +39,16 @@ export function Sidebar({ className = '' }: SideBarProps) {
       {renderSidebarItemList}
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <AppButton
+        <Button
           type="button"
           data-testid="toggle"
           onClick={onToggle}
-          size={AppButtonSize.L}
-          theme={AppButtonTheme.BACKGROUND}
+          size={ButtonSize.L}
+          theme={ButtonTheme.BACKGROUND}
           square
         >
           {collapsed ? '->' : '<-'}
-        </AppButton>
+        </Button>
         <LanguageSwitcher short={collapsed} />
       </div>
     </div>

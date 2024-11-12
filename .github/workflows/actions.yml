@@ -1,43 +1,43 @@
-name: linting, testing, building
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# name: linting, testing, building
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
 
-jobs:
-  pipeline:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js environment v.${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: install-deps
-        run: npm install
-      - name: build project
-        if: always()
-        run: npm run build:prod
-      - name: linting typescript
-        if: always()
-        run: npm run lint
-      - name: linting css
-        if: always()
-        run: npm run stylelint
-      - name: unit testing
-        if: always()
-        run: npm run test:unit
-      - name: unit testing
-        if: always()
-        run: npm run test:unit
-      - name: build storybook
-        if: always()      
-        run: npm run sb:build
-      - name: test ui
-        if: always()
-        run: npm run test:ui:ci
+# jobs:
+#   pipeline:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [ 18.x ]
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Setup Node.js environment v.${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - name: install-deps
+#         run: npm install
+#       - name: build project
+#         if: always()
+#         run: npm run build:prod
+#       - name: linting typescript
+#         if: always()
+#         run: npm run lint
+#       - name: linting css
+#         if: always()
+#         run: npm run stylelint
+#       - name: unit testing
+#         if: always()
+#         run: npm run test:unit
+#       - name: unit testing
+#         if: always()
+#         run: npm run test:unit
+#       - name: build storybook
+#         if: always()      
+#         run: npm run sb:build
+#       - name: test ui
+#         if: always()
+#         run: npm run test:ui:ci

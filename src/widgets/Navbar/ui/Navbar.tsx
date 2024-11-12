@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
@@ -34,26 +34,26 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   if (authData) {
     return (
       <div className={classNames(styles.navbar, {}, [className])}>
-        <AppButton
+        <Button
           className={styles.links}
-          theme={AppButtonTheme.CLEAR_INVERTED}
+          theme={ButtonTheme.CLEAR_INVERTED}
           onClick={onLogoutClick}
         >
           {t('Выйти')}
-        </AppButton>
+        </Button>
       </div>
     );
   }
 
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
-      <AppButton
+      <Button
         className={styles.links}
         onClick={onOpenModal}
-        theme={AppButtonTheme.CLEAR_INVERTED}
+        theme={ButtonTheme.CLEAR_INVERTED}
       >
         {t('Войти')}
-      </AppButton>
+      </Button>
       <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
     </div>
   );

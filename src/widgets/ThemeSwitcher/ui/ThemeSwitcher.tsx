@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 import { memo } from 'react';
 import ThemeDarkSvg from '../assets/theme-dark.svg';
@@ -15,12 +15,12 @@ export const ThemeSwitcher = memo(({ className = '' }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <AppButton
+    <Button
       className={classNames('', {}, [className])}
       onClick={toggleTheme}
-      theme={AppButtonTheme.CLEAR}
+      theme={ButtonTheme.CLEAR}
     >
       {theme === Theme.Dark ? <ThemeLightSvg /> : <ThemeDarkSvg />}
-    </AppButton>
+    </Button>
   );
 });

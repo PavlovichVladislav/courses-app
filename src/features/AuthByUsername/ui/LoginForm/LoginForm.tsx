@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { useTranslation } from 'react-i18next';
-import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
@@ -62,14 +62,14 @@ const LoginForm = memo(({ className, onLogin }: LoginFormProps) => {
           value={password}
           onChange={onChangePassword}
         />
-        <AppButton
+        <Button
           className={styles.loginBtn}
-          theme={AppButtonTheme.OUTLINE}
+          theme={ButtonTheme.OUTLINE}
           onClick={onLoginClick}
           disabled={isLoading}
         >
           {t('Войти')}
-        </AppButton>
+        </Button>
       </div>
     </DynamicModuleLoader>
   );

@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { useTranslation } from 'react-i18next';
-import { AppButton, AppButtonTheme } from 'shared/ui/AppButton/AppButton';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 import { memo } from 'react';
 import styles from './LanguageSwitcher.module.scss';
@@ -19,13 +19,13 @@ export const LanguageSwitcher = memo(({ className = '', short = false }: Languag
   };
 
   return (
-    <AppButton
+    <Button
       type="button"
       className={classNames(styles.languageSwitcher, {}, [className])}
       onClick={toggleLanguage}
-      theme={AppButtonTheme.CLEAR}
+      theme={ButtonTheme.CLEAR}
     >
       {t(short ? 'Сокращённый_Язык' : 'Язык')}
-    </AppButton>
+    </Button>
   );
 });

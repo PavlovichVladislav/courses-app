@@ -3,9 +3,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
   ButtonHTMLAttributes, FC, memo, ReactNode,
 } from 'react';
-import styles from './AppButton.module.scss';
+import styles from './Button.module.scss';
 
-export const enum AppButtonTheme {
+export const enum ButtonTheme {
   CLEAR = 'clear',
   CLEAR_INVERTED = 'clearInverted',
   OUTLINE = 'outline',
@@ -13,27 +13,27 @@ export const enum AppButtonTheme {
   BACKGROUND_INVERTED = 'backgroundInverted'
 }
 
-export const enum AppButtonSize {
+export const enum ButtonSize {
   M = 'sizeM',
   L = 'sizeL',
   XL = 'sizeXl',
 }
 
-interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
-  theme?: AppButtonTheme;
+  theme?: ButtonTheme;
   square?: boolean;
-  size?: AppButtonSize;
+  size?: ButtonSize;
   disabled?: boolean;
 }
 
-export const AppButton: FC<AppButtonProps> = memo(({
+export const Button: FC<ButtonProps> = memo(({
   className = '',
   children,
   square,
   theme,
-  size = AppButtonSize.M,
+  size = ButtonSize.M,
   disabled,
   ...otherProps
 }) => {
@@ -48,7 +48,7 @@ export const AppButton: FC<AppButtonProps> = memo(({
       type="button"
       className={
         classNames(
-          styles.appButton,
+          styles.Button,
           mods,
           [className, styles[theme], styles[size]],
         )

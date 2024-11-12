@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { useTranslation } from 'react-i18next';
-import { AppButton } from 'shared/ui/AppButton/AppButton';
+import { Button } from 'shared/ui/Button/Button';
 import styles from './PageError.module.scss';
 
 interface PageErrorProps {
@@ -18,7 +18,7 @@ export const PageError = ({ className }: PageErrorProps) => {
   return (
     <div className={classNames(styles.pageError, {}, [className])}>
       {t('Произошла ошибка.')}
-      <AppButton onClick={onReload}>{t('Перезагрузить')}</AppButton>
+      <Button onClick={onReload}>{t('Перезагрузить')}</Button>
     </div>
   );
 };
