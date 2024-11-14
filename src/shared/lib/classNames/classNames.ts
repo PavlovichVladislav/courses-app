@@ -3,7 +3,7 @@ type conditionalClasses = Record<string, string | boolean>;
 export const classNames = (
   mainClass: string,
   conditionalClasses: conditionalClasses = {},
-  additionalClasses: string[] = [],
+  additionalClasses: (string | undefined)[] = [],
 ): string => ([
   mainClass,
   ...Object.entries(conditionalClasses)

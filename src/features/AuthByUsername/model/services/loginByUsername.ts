@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { AxiosError } from 'axios';
 import { User, userActions } from 'entities/User';
 import { USER_LS_KEY } from 'shared/const/localStorage';
 
@@ -24,7 +25,8 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
       dispatch(userActions.setAuthData(response.data));
 
       return response.data;
-    } catch (e) {
+    } catch (error) {
+      const e = error as unknown as AxiosError;
       console.error(e);
 
       return rejectWithValue(e.message);
