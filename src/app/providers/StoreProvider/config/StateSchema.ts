@@ -1,5 +1,5 @@
 import {
-  Action, EnhancedStore, Reducer, ReducersMapObject,
+  Action, Dispatch, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ProfileSchema } from 'entities/Profile';
@@ -15,22 +15,22 @@ export interface StateSchema {
   profile?: ProfileSchema
 }
 
-export type reducersKey = keyof StateSchema;
+export type ReducersKey = keyof StateSchema;
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: Action) => StateSchema;
-  add: (key: reducersKey, reducer: Reducer) => void;
-  remove: (key: reducersKey) => void;
+  add: (key: ReducersKey, reducer: Reducer) => void;
+  remove: (key: ReducersKey) => void;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-  reducerManager?: ReducerManager;
+  reducerManager: ReducerManager;
 }
 
 export interface ThunkExtraArg {
   api: AxiosInstance,
-  navigate: NavigateFunction
+  navigate?: NavigateFunction
 }
 
 export interface ThunkConfig<E> {

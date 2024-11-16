@@ -11,25 +11,29 @@ export default ({ config }: {config: webpack.Configuration}) => {
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
 
-  config.resolve.modules.push(paths.src, 'node_modules');
-  config.resolve.extensions.push('.tsx', '.ts', '.js');
-  config.module.rules.push(buildStyleLoaders(true));
+  config.resolve?.modules?.push(paths.src, 'node_modules');
+  config.resolve?.extensions?.push('.tsx', '.ts', '.js');
+  config.module?.rules?.push(buildStyleLoaders(true));
 
   // отключаем дефолтную обработку svg, которую настраивает storybook
-  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    if (/svg/.test(rule.test as string)) {
-      return { ...rule, exclude: /\.svg$/i };
-    }
+  if (config.module && config.module.rules) {
+    config.module.rules = config.module.rules.map((rule) => {
+      const r = rule as RuleSetRule;
 
-    return rule;
-  });
+      if (/svg/.test(r.test as string)) {
+        return { ...r, exclude: /\.svg$/i };
+      }
 
-  config.module.rules.push({
+      return rule;
+    });
+  }
+
+  config.module?.rules?.push({
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   });
 
-  config.plugins.push(new webpack.DefinePlugin({
+  config.plugins?.push(new webpack.DefinePlugin({
     IS_DEV: true,
     __API__: '',
   }));

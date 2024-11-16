@@ -1,4 +1,4 @@
-type conditionalClasses = Record<string, string | boolean>;
+type conditionalClasses = Record<string, string | boolean | undefined>;
 
 export const classNames = (
   mainClass: string,
