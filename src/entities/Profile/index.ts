@@ -11,3 +11,15 @@ export {
 export {
   ProfileCard,
 } from './ui/ProfileCard/ProfileCard';
+
+export {
+  getProfilehData,
+} from './model/selectors/getProfileData';
+
+export {
+  getProfileError,
+} from './model/selectors/getProfileError';
+
+export {
+  getProfileLoading,
+} from './model/selectors/getProfileLoading';

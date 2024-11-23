@@ -1,24 +1,46 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { useTranslation } from 'react-i18next';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
-import { getProfileError } from 'entities/Profile/model/selectors/getProfileError';
-import { getProfileLoading } from 'entities/Profile/model/selectors/getProfileLoading';
-import { getProfilehData } from '../../model/selectors/getProfileData';
+import { Spinner } from 'shared/ui/Spinner/Spinner';
+import { Profile } from 'entities/Profile/model/types/profile';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-  className?: string
+  data: Profile;
+  className?: string;
+  error?: string;
+  loaading: boolean;
 }
 
-export const ProfileCard = ({ className }: ProfileCardProps) => {
+export const ProfileCard = ({
+  className, error, loaading, data,
+}: ProfileCardProps) => {
+  const { firstname, lastname } = data;
   const { t } = useTranslation('profile');
-  const { firstname, lastname } = useSelector(getProfilehData);
-  const error = useSelector(getProfileError);
-  const loaading = useSelector(getProfileLoading);
+
+  if (loaading) {
+    return (
+      <div className={classNames(styles.profileCard, {}, [className, styles.loading])}>
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={classNames(styles.profileCard, {}, [className])}>
+        <Text
+          theme={TextTheme.ERROR}
+          title="Ошибка при загрузке профиля. Попробуйте, обновить страницу"
+          text={error}
+          align={TextAlign.CENTER}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(styles.profileCard, {}, [className])}>
