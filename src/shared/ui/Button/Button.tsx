@@ -48,7 +48,7 @@ export const Button: FC<ButtonProps> = memo(({
       type="button"
       className={
         classNames(
-          styles.Button,
+          styles.button,
           mods,
           [className, styles[theme], styles[size]],
         )

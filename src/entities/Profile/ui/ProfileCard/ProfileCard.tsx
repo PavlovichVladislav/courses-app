@@ -2,7 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Profile } from 'entities/Profile/model/types/profile';
@@ -13,10 +12,13 @@ interface ProfileCardProps {
   className?: string;
   error?: string;
   loaading: boolean;
+  readOnly?: boolean;
+  onChangeFirstName: (firstName: string) => void;
+  onChangeLastName: (lastname: string) => void;
 }
 
 export const ProfileCard = ({
-  className, error, loaading, data,
+  className, error, loaading, data, readOnly, onChangeFirstName, onChangeLastName,
 }: ProfileCardProps) => {
   const { firstname, lastname } = data;
   const { t } = useTranslation('profile');
@@ -44,15 +46,9 @@ export const ProfileCard = ({
 
   return (
     <div className={classNames(styles.profileCard, {}, [className])}>
-      <div className={styles.header}>
-        <Text title={t('Профиль')} />
-        <Button className={styles.btn} theme={ButtonTheme.OUTLINE}>
-          {t('Редактировать')}
-        </Button>
-      </div>
       <div className={styles.data}>
-        <Input value={firstname} placeholder={t('Ваше имя')} />
-        <Input value={lastname} placeholder={t('Ваше фамилия')} />
+        <Input value={firstname} onChange={onChangeFirstName} placeholder={t('Ваше имя')} readOnly={readOnly} />
+        <Input value={lastname} onChange={onChangeLastName} placeholder={t('Ваше фамилия')} readOnly={readOnly} />
       </div>
     </div>
   );

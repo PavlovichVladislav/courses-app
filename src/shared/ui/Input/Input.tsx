@@ -5,16 +5,17 @@ import {
 } from 'react';
 import styles from './Input.module.scss';
 
-interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
+interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
   className?: string;
   value?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
   autoFocus?: boolean;
+  readOnly?: boolean;
 }
 
 export const Input = memo(({
-  className, value, placeholder, onChange, autoFocus, type = 'text', ...otherProps
+  className, value, placeholder, onChange, autoFocus, type = 'text', readOnly, ...otherProps
 }: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
@@ -36,7 +37,7 @@ export const Input = memo(({
   }, [autoFocus]);
 
   return (
-    <div className={classNames(styles.inputWrapper, {}, [className])}>
+    <div className={classNames(styles.inputWrapper, { [styles.readOnly]: readOnly }, [className])}>
       {placeholder && (
         <div className={styles.placeholder}>
           {`${placeholder}>`}
@@ -52,9 +53,10 @@ export const Input = memo(({
           type={type}
           onSelect={onSelect}
           ref={inputRef}
+          readOnly={readOnly}
           {...otherProps}
         />
-        {isFocused && (
+        {isFocused && !readOnly && (
           <span style={{ left: `${caretPosition * 9}px` }} className={styles.carriage} />
         )}
       </div>
