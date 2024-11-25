@@ -26,12 +26,12 @@
     }
   ],
   "profile": {
-    "firstname": "Владислав",
-    "lastname": "Павлович",
-    "age": "22",
+    "firstname": "Владислав I",
+    "lastname": "Pavlovich",
+    "age": 23,
     "currency": "Rub",
     "country": "Russia",
-    "city": "Moscow",
+    "city": "St.Petersburg",
     "username": "admin",
     "avatar": "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
   }

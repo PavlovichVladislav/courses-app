@@ -7,9 +7,6 @@ import { Button, ButtonSize, ButtonTheme } from './Button';
 const meta = {
   title: 'shared/Button',
   component: Button,
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
   args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
 
@@ -42,6 +39,13 @@ export const OutlineDark: Story = {
     theme: ButtonTheme.OUTLINE,
   },
   decorators: [ThemeDecorator(Theme.Dark)],
+};
+
+export const OutlineRed: Story = {
+  args: {
+    children: 'OUTLINE',
+    theme: ButtonTheme.OUTLINE_RED,
+  },
 };
 
 export const Background: Story = {

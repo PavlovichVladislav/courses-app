@@ -5,8 +5,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'entities/Profile/model/selectors/getProfileReadonly';
-import { profileActions } from 'entities/Profile';
+import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
 import styles from './ProfilePageHader.module.scss';
 
 interface ProfilePageHaderProps {
@@ -23,7 +22,11 @@ export const ProfilePageHader = ({ className }: ProfilePageHaderProps) => {
   };
 
   const onCancelEdit = () => {
-    dispatch(profileActions.setProfileReadOnly(true));
+    dispatch(profileActions.canelEdit());
+  };
+
+  const onSave = () => {
+    dispatch(updateProfileData());
   };
 
   return (
@@ -34,9 +37,14 @@ export const ProfilePageHader = ({ className }: ProfilePageHaderProps) => {
           {t('Редактировать')}
         </Button>
       ) : (
-        <Button className={styles.btn} theme={ButtonTheme.OUTLINE} onClick={onCancelEdit}>
-          {t('Отменить')}
-        </Button>
+        <div className={styles.btnGroup}>
+          <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>
+            {t('Сохранить')}
+          </Button>
+          <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit}>
+            {t('Отменить')}
+          </Button>
+        </div>
       )}
     </div>
   );

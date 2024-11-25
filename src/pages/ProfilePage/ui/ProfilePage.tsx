@@ -2,13 +2,18 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
 import {
-  getProfileError, getProfilehData, getProfileLoading, profileActions, ProfileCard, profileReducer,
+  fetchProfileData,
+  getProfileError,
+  getProfileFormData,
+  getProfileLoading,
+  getProfileReadonly,
+  profileActions,
+  ProfileCard,
+  profileReducer,
 } from 'entities/Profile';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { fetchProfileData } from 'entities/Profile/model/services/fetchProfileData';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'entities/Profile/model/selectors/getProfileReadonly';
 import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
 
 interface ProfilePageProps {
@@ -21,7 +26,7 @@ const initialReducers: ReducersList = {
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
   const dispatch = useAppDispatch();
-  const profile = useSelector(getProfilehData);
+  const formData = useSelector(getProfileFormData);
   const loading = useSelector(getProfileLoading);
   const error = useSelector(getProfileError);
   const readOnly = useSelector(getProfileReadonly);
@@ -30,15 +35,27 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     dispatch(fetchProfileData());
   }, [dispatch]);
 
-  const onChangeFirstName = (firstName: string) => {
-    dispatch(profileActions.setProfileData({
-      firstName,
+  const onChangeFirstName = (firstname: string) => {
+    dispatch(profileActions.setFormData({
+      firstname,
     }));
   };
 
   const onChangeLastName = (lastname: string) => {
-    dispatch(profileActions.setProfileData({
+    dispatch(profileActions.setFormData({
       lastname,
+    }));
+  };
+
+  const onChangeCity = (city: string) => {
+    dispatch(profileActions.setFormData({
+      city,
+    }));
+  };
+
+  const onChangeAge = (age: string) => {
+    dispatch(profileActions.setFormData({
+      age: Number(age),
     }));
   };
 
@@ -47,12 +64,14 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
       <div className={classNames('', {}, [className])}>
         <ProfilePageHader />
         <ProfileCard
-          data={profile}
+          data={formData}
           loaading={loading}
           error={error}
           readOnly={readOnly}
           onChangeFirstName={onChangeFirstName}
           onChangeLastName={onChangeLastName}
+          onChangeCity={onChangeCity}
+          onChangeAge={onChangeAge}
         />
       </div>
     </DynamicModuleLoader>

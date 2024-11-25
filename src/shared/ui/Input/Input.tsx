@@ -7,7 +7,7 @@ import styles from './Input.module.scss';
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
   className?: string;
-  value?: string;
+  value?: string | number;
   placeholder?: string;
   onChange?: (value: string) => void;
   autoFocus?: boolean;
