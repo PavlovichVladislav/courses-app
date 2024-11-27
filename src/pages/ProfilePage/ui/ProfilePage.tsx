@@ -59,6 +59,18 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     }));
   };
 
+  const onChangeUsername = (username: string) => {
+    dispatch(profileActions.setFormData({
+      username,
+    }));
+  };
+
+  const onChangeAvatar = (avatar: string) => {
+    dispatch(profileActions.setFormData({
+      avatar,
+    }));
+  };
+
   return (
     <DynamicModuleLoader reducerName="profile" reducers={initialReducers}>
       <div className={classNames('', {}, [className])}>
@@ -72,6 +84,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           onChangeLastName={onChangeLastName}
           onChangeCity={onChangeCity}
           onChangeAge={onChangeAge}
+          onChangeUsername={onChangeUsername}
+          onChangeAvatar={onChangeAvatar}
         />
       </div>
     </DynamicModuleLoader>

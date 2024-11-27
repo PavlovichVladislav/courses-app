@@ -5,6 +5,7 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Profile } from 'entities/Profile/model/types/profile';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -13,10 +14,12 @@ interface ProfileCardProps {
   error?: string;
   loaading: boolean;
   readOnly?: boolean;
-  onChangeFirstName: (firstName: string) => void;
-  onChangeLastName: (lastname: string) => void;
-  onChangeCity: (city: string) => void;
-  onChangeAge: (age: string) => void;
+  onChangeFirstName?: (firstName: string) => void;
+  onChangeLastName?: (lastname: string) => void;
+  onChangeCity?: (city: string) => void;
+  onChangeAge?: (age: string) => void;
+  onChangeUsername?: (username: string) => void;
+  onChangeAvatar?: (avatar: string) => void;
 }
 
 export const ProfileCard = ({
@@ -29,12 +32,16 @@ export const ProfileCard = ({
   onChangeLastName,
   onChangeCity,
   onChangeAge,
+  onChangeUsername,
+  onChangeAvatar,
 }: ProfileCardProps) => {
   const {
     firstname,
     lastname,
     city,
     age,
+    username,
+    avatar,
   } = data;
   const { t } = useTranslation('profile');
 
@@ -62,10 +69,15 @@ export const ProfileCard = ({
   return (
     <div className={classNames(styles.profileCard, {}, [className])}>
       <div className={styles.data}>
+        <div className={styles.avatarWrapper}>
+          <Avatar src={avatar} />
+        </div>
         <Input value={firstname} onChange={onChangeFirstName} placeholder={t('Ваше имя')} readOnly={readOnly} />
         <Input value={lastname} onChange={onChangeLastName} placeholder={t('Ваше фамилия')} readOnly={readOnly} />
         <Input value={city} onChange={onChangeCity} placeholder={t('Ваше город')} readOnly={readOnly} />
         <Input value={age} onChange={onChangeAge} placeholder={t('Ваше возраст')} readOnly={readOnly} />
+        <Input value={username} onChange={onChangeUsername} placeholder={t('Имя профиля')} readOnly={readOnly} />
+        <Input value={avatar} onChange={onChangeAvatar} placeholder={t('Аватар')} readOnly={readOnly} />
       </div>
     </div>
   );
