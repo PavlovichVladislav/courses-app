@@ -6,6 +6,8 @@ import { Input } from 'shared/ui/Input/Input';
 import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Profile } from 'entities/Profile/model/types/profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Select } from 'shared/ui/Select/Select';
+import { Currency } from 'shared/const/common';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -20,6 +22,7 @@ interface ProfileCardProps {
   onChangeAge?: (age: string) => void;
   onChangeUsername?: (username: string) => void;
   onChangeAvatar?: (avatar: string) => void;
+  onChangeCurrency?: (currency: string) => void;
 }
 
 export const ProfileCard = ({
@@ -34,6 +37,7 @@ export const ProfileCard = ({
   onChangeAge,
   onChangeUsername,
   onChangeAvatar,
+  onChangeCurrency,
 }: ProfileCardProps) => {
   const {
     firstname,
@@ -42,6 +46,7 @@ export const ProfileCard = ({
     age,
     username,
     avatar,
+    currency,
   } = data;
   const { t } = useTranslation('profile');
 
@@ -67,7 +72,7 @@ export const ProfileCard = ({
   }
 
   return (
-    <div className={classNames(styles.profileCard, {}, [className])}>
+    <div className={classNames(styles.profileCard, { [styles.editing]: !readOnly }, [className])}>
       <div className={styles.data}>
         <div className={styles.avatarWrapper}>
           <Avatar src={avatar} />
@@ -78,6 +83,17 @@ export const ProfileCard = ({
         <Input value={age} onChange={onChangeAge} placeholder={t('Ваше возраст')} readOnly={readOnly} />
         <Input value={username} onChange={onChangeUsername} placeholder={t('Имя профиля')} readOnly={readOnly} />
         <Input value={avatar} onChange={onChangeAvatar} placeholder={t('Аватар')} readOnly={readOnly} />
+        <Select
+          value={currency}
+          setValue={onChangeCurrency}
+          options={[
+            { value: Currency.RUB, content: Currency.RUB },
+            { value: Currency.EUR, content: Currency.EUR },
+            { value: Currency.USD, content: Currency.USD },
+          ]}
+          label="Валюта"
+          readOnly={readOnly}
+        />
       </div>
     </div>
   );

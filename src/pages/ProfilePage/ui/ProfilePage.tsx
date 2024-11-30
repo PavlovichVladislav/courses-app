@@ -71,6 +71,12 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     }));
   };
 
+  const onChangeCurrency = (currency: string) => {
+    dispatch(profileActions.setFormData({
+      currency,
+    }));
+  };
+
   return (
     <DynamicModuleLoader reducerName="profile" reducers={initialReducers}>
       <div className={classNames('', {}, [className])}>
@@ -86,6 +92,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           onChangeAge={onChangeAge}
           onChangeUsername={onChangeUsername}
           onChangeAvatar={onChangeAvatar}
+          onChangeCurrency={onChangeCurrency}
         />
       </div>
     </DynamicModuleLoader>
