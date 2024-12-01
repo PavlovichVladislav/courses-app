@@ -21,7 +21,8 @@ const meta = {
       },
     ],
     value: 'rub',
-    setValue: () => {},
+    onChange: () => {},
+    readonly: false,
   },
 } satisfies Meta<typeof Select>;
 

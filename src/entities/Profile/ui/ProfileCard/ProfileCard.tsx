@@ -4,10 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Spinner } from 'shared/ui/Spinner/Spinner';
-import { Profile } from 'entities/Profile/model/types/profile';
+import { Profile } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Select } from 'shared/ui/Select/Select';
-import { Currency } from 'shared/const/common';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -22,7 +21,7 @@ interface ProfileCardProps {
   onChangeAge?: (age: string) => void;
   onChangeUsername?: (username: string) => void;
   onChangeAvatar?: (avatar: string) => void;
-  onChangeCurrency?: (currency: string) => void;
+  onChangeCurrency?: (currency: Currency) => void;
 }
 
 export const ProfileCard = ({
@@ -83,16 +82,10 @@ export const ProfileCard = ({
         <Input value={age} onChange={onChangeAge} placeholder={t('Ваше возраст')} readOnly={readOnly} />
         <Input value={username} onChange={onChangeUsername} placeholder={t('Имя профиля')} readOnly={readOnly} />
         <Input value={avatar} onChange={onChangeAvatar} placeholder={t('Аватар')} readOnly={readOnly} />
-        <Select
+        <CurrencySelect
           value={currency}
-          setValue={onChangeCurrency}
-          options={[
-            { value: Currency.RUB, content: Currency.RUB },
-            { value: Currency.EUR, content: Currency.EUR },
-            { value: Currency.USD, content: Currency.USD },
-          ]}
-          label="Валюта"
-          readOnly={readOnly}
+          onChange={onChangeCurrency}
+          readonly={readOnly}
         />
       </div>
     </div>

@@ -13,12 +13,12 @@ interface SelectProps {
   label?: string;
   options: SelectOption[];
   value: string;
-  setValue: (value: string) => void;
-  readOnly: boolean;
+  onChange: (value: string) => void;
+  readonly: boolean;
 }
 
 export const Select = memo(({
-  className, label, options, value, setValue, readOnly,
+  className, label, options, value, onChange, readonly,
 }: SelectProps) => {
   const optionsList = useMemo(() => {
     return options.map(({ content, value }) => {
@@ -26,19 +26,19 @@ export const Select = memo(({
     });
   }, [options]);
 
-  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setValue(event.target.value);
+  const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    onChange(event.target.value);
   };
 
   return (
-    <div className={classNames(styles.wrapper, { [styles.readonly]: readOnly }, [className])}>
+    <div className={classNames(styles.wrapper, { [styles.readonly]: readonly }, [className])}>
       {label && (
         <span>
           {label}
           {'>'}
         </span>
       )}
-      <select value={value} className={styles.select} onChange={onChange} disabled={readOnly}>
+      <select value={value} className={styles.select} onChange={onChangeHandler} disabled={readonly}>
         {optionsList}
       </select>
     </div>

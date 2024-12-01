@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
+import { Currency } from 'entities/Currency';
 
 interface ProfilePageProps {
   className?: string
@@ -71,7 +72,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     }));
   };
 
-  const onChangeCurrency = (currency: string) => {
+  const onChangeCurrency = (currency: Currency) => {
     dispatch(profileActions.setFormData({
       currency,
     }));
