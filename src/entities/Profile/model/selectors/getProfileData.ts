@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { Currency } from 'entities/Currency';
-import { Country } from 'shared/const/common';
+import { Country } from 'entities/Country';
 
 export const getProfilehData = (state: StateSchema) => state.profile?.profileData || {
   firstname: '',

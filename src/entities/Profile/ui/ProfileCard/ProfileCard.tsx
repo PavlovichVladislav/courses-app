@@ -7,6 +7,7 @@ import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Profile } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
+import { Country, CountrySelect } from 'entities/Country';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -22,6 +23,7 @@ interface ProfileCardProps {
   onChangeUsername?: (username: string) => void;
   onChangeAvatar?: (avatar: string) => void;
   onChangeCurrency?: (currency: Currency) => void;
+  onChangeCountry?: (country: Country) => void;
 }
 
 export const ProfileCard = ({
@@ -37,6 +39,7 @@ export const ProfileCard = ({
   onChangeUsername,
   onChangeAvatar,
   onChangeCurrency,
+  onChangeCountry,
 }: ProfileCardProps) => {
   const {
     firstname,
@@ -46,6 +49,7 @@ export const ProfileCard = ({
     username,
     avatar,
     currency,
+    country,
   } = data;
   const { t } = useTranslation('profile');
 
@@ -85,6 +89,11 @@ export const ProfileCard = ({
         <CurrencySelect
           value={currency}
           onChange={onChangeCurrency}
+          readonly={readOnly}
+        />
+        <CountrySelect
+          value={country}
+          onChange={onChangeCountry}
           readonly={readOnly}
         />
       </div>

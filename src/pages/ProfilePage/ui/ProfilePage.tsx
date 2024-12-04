@@ -14,8 +14,9 @@ import {
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
 import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
+import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
 
 interface ProfilePageProps {
   className?: string
@@ -78,6 +79,12 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     }));
   };
 
+  const onChangeCountry = (country: Country) => {
+    dispatch(profileActions.setFormData({
+      country,
+    }));
+  };
+
   return (
     <DynamicModuleLoader reducerName="profile" reducers={initialReducers}>
       <div className={classNames('', {}, [className])}>
@@ -94,6 +101,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           onChangeUsername={onChangeUsername}
           onChangeAvatar={onChangeAvatar}
           onChangeCurrency={onChangeCurrency}
+          onChangeCountry={onChangeCountry}
         />
       </div>
     </DynamicModuleLoader>

@@ -7,6 +7,7 @@ import ProfileIcon from 'shared/assets/icons/Profile.svg';
 export interface ISidebarItem {
   path: string;
   text: string;
+  authOnly?: boolean;
   Icon: FunctionComponent<SVGProps<SVGSVGElement> & {
     title?: string;
   }>
@@ -27,5 +28,6 @@ export const sidebarItemsList: ISidebarItem[] = [
     path: RoutePath.profile,
     Icon: ProfileIcon,
     text: 'Профиль',
+    authOnly: true,
   },
 ];
