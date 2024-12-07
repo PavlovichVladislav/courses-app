@@ -39,3 +39,7 @@ export {
 export {
   updateProfileData,
 } from './model/services/updateProfileData';
+
+export {
+  getValidatePorfileErrors,
+} from './model/selectors/getValidatePorfileErrors';

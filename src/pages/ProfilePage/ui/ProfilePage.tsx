@@ -7,6 +7,7 @@ import {
   getProfileFormData,
   getProfileLoading,
   getProfileReadonly,
+  getValidatePorfileErrors,
   profileActions,
   ProfileCard,
   profileReducer,
@@ -31,6 +32,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const formData = useSelector(getProfileFormData);
   const loading = useSelector(getProfileLoading);
   const error = useSelector(getProfileError);
+  const validateErrors = useSelector(getValidatePorfileErrors);
+
   const readOnly = useSelector(getProfileReadonly);
 
   useEffect(() => {
@@ -93,6 +96,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           data={formData}
           loaading={loading}
           error={error}
+          validateErrors={validateErrors}
           readOnly={readOnly}
           onChangeFirstName={onChangeFirstName}
           onChangeLastName={onChangeLastName}

@@ -26,9 +26,9 @@
     }
   ],
   "profile": {
-    "firstname": "Владислав",
+    "firstname": "Vladislav",
     "lastname": "Pavlovich",
-    "age": null,
+    "age": 22,
     "currency": "USD",
     "country": "Belarus",
     "city": "Moscow",
