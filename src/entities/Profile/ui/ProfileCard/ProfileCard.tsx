@@ -8,14 +8,12 @@ import { Profile } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
-import { ValidateProfileError } from 'entities/Profile/model/services/validateProfileData';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
   data: Profile;
   className?: string;
   error?: string;
-  validateErrors: ValidateProfileError[];
   loaading: boolean;
   readOnly?: boolean;
   onChangeFirstName?: (firstName: string) => void;
@@ -31,7 +29,6 @@ interface ProfileCardProps {
 export const ProfileCard = ({
   className,
   error,
-  validateErrors,
   loaading,
   data,
   readOnly,
@@ -56,14 +53,6 @@ export const ProfileCard = ({
   } = data;
   const { t } = useTranslation('profile');
 
-  const validateProfileErrors = {
-    [ValidateProfileError.EMPTY_PROFILE_DATA]: t('Пустой профиль'),
-    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
-    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректное значение в названии страны'),
-    [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорректные имя или фамилия'),
-    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
-  };
-
   if (loaading) {
     return (
       <div className={classNames(styles.profileCard, {}, [className, styles.loading])}>
@@ -87,9 +76,6 @@ export const ProfileCard = ({
 
   return (
     <div className={classNames(styles.profileCard, { [styles.editing]: !readOnly }, [className])}>
-      {validateErrors.map((error) => (
-        <Text theme={TextTheme.ERROR} title={validateProfileErrors[error]} />
-      ))}
       <div className={styles.data}>
         <div className={styles.avatarWrapper}>
           <Avatar src={avatar} />

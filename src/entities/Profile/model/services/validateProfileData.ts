@@ -9,21 +9,24 @@ export enum ValidateProfileError {
 }
 
 export const validateProfileData = (profile?: Profile) => {
+  const {
+    age, firstname, lastname, country,
+  } = profile;
   const errors: ValidateProfileError[] = [];
 
   if (!profile) {
     errors.push(ValidateProfileError.EMPTY_PROFILE_DATA);
   }
 
-  if (!profile.firstname || !profile.firstname) {
+  if (!firstname || !lastname) {
     errors.push(ValidateProfileError.INCORRECT_USER_DATA);
   }
 
-  if (!profile.age || !Number(profile.age)) {
+  if (!age || !Number(age)) {
     errors.push(ValidateProfileError.INCORRECT_AGE);
   }
 
-  if (!profile.country) {
+  if (!country) {
     errors.push(ValidateProfileError.INCORRECT_COUNTRY);
   }
 
