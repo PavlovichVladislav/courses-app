@@ -41,7 +41,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const readOnly = useSelector(getProfileReadonly);
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const validateProfileErrors = {

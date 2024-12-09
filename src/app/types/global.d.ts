@@ -37,3 +37,4 @@ declare module '*.jpeg' {
 
 declare let IS_DEV: boolean;
 declare let __API__: string;
+declare let __PROJECT__: 'storybook' | 'frontend' | 'jest';

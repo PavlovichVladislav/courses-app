@@ -28,8 +28,9 @@ export const buildPlugins = (
       chunkFilename: 'css/[id].[contenthash:8].css',
     }),
     new webpack.DefinePlugin({
-      IS_DEV: settings.isDev,
-      __API__: settings.apiUrl,
+      IS_DEV: JSON.stringify(settings.isDev),
+      __API__: JSON.stringify(settings.apiUrl),
+      __PROJECT__: JSON.stringify(settings.project),
     }),
     new CopyPlugin({
       patterns: [
