@@ -13,33 +13,38 @@ export {
 } from './ui/ProfileCard/ProfileCard';
 
 export {
-  getProfilehData,
-} from './model/selectors/getProfileData';
+  getProfileData,
+} from './model/selectors/getProfileData/getProfileData';
 
 export {
   getProfileError,
-} from './model/selectors/getProfileError';
+} from './model/selectors/getProfileError/getProfileError';
 
 export {
   getProfileLoading,
-} from './model/selectors/getProfileLoading';
+} from './model/selectors/getProfileLoading/getProfileLoading';
 
 export {
   getProfileFormData,
-} from './model/selectors/getProfileFormData';
+} from './model/selectors/getProfileFormData/getProfileFormData';
 
 export {
   getProfileReadonly,
-} from './model/selectors/getProfileReadonly';
+} from './model/selectors/getProfileReadonly/getProfileReadonly';
 
 export {
   fetchProfileData,
-} from './model/services/fetchProfileData';
+} from './model/services/fetchProfileData/fetchProfileData';
 
 export {
   updateProfileData,
-} from './model/services/updateProfileData';
+} from './model/services/updateProfileData/updateProfileData';
 
 export {
   getValidatePorfileErrors,
-} from './model/selectors/getValidatePorfileErrors';
+} from './model/selectors/getValidatePorfileErrors/getValidatePorfileErrors';
+
+export {
+  validateProfileData,
+  ValidateProfileError,
+} from './model/services/validateProfileData/validateProfileData';

@@ -1,4 +1,4 @@
-import { Profile } from '../types/profile';
+import { Profile } from '../../types/profile';
 
 export enum ValidateProfileError {
   EMPTY_PROFILE_DATA = 'EMPTY_PROFILE_DATA',

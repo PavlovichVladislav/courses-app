@@ -2,7 +2,7 @@ import { StateSchema } from 'app/providers/StoreProvider';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 
-export const getProfilehData = (state: StateSchema) => state.profile?.profileData || {
+export const getProfileData = (state: StateSchema) => state.profile?.profileData || {
   firstname: '',
   lastname: '',
   age: 0,

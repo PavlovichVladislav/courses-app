@@ -11,6 +11,7 @@ import {
   profileActions,
   ProfileCard,
   profileReducer,
+  ValidateProfileError,
 } from 'entities/Profile';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -18,7 +19,6 @@ import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { ValidateProfileError } from 'entities/Profile/model/services/validateProfileData';
 import { useTranslation } from 'react-i18next';
 import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
 

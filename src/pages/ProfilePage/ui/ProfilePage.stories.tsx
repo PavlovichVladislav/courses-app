@@ -3,9 +3,9 @@ import { StoreDecorator } from 'shared/config/decorators/StoreDecorator/StoreDec
 import avatar from 'shared/ui/Avatar/avatar.png';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import ProfilePage from './ProfilePage';
 import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import ProfilePage from './ProfilePage';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -32,7 +32,7 @@ export const Primary: Story = {
         isLoading: false,
         readonly: true,
       },
-    })
+    }),
   ],
 };
 
@@ -54,6 +54,6 @@ export const Dark: Story = {
         readonly: true,
       },
     }),
-    ThemeDecorator(Theme.Dark), 
+    ThemeDecorator(Theme.Dark),
   ],
 };
