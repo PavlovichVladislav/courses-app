@@ -4,7 +4,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { PageError } from './PageError';
 
 const meta = {
-  title: 'shared/PageError',
+  title: 'widgets/PageError',
   component: PageError,
   // argTypes: {
   //   backgroundColor: { control: 'color' },

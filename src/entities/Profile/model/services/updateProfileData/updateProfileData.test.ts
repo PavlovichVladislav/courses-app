@@ -57,7 +57,7 @@ describe('updateProfileData test', () => {
   test('updateProfileData validate error', async () => {
     const testAsyncThunk = new TestAsyncThunk(updateProfileData, {
       profile: {
-        formData: {...data, firstname: ''},
+        formData: { ...data, firstname: '' },
         isLoading: false,
         readonly: true,
       },

@@ -1,4 +1,4 @@
-import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
 import { api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router-dom';
