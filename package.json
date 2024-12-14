@@ -12,7 +12,7 @@
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
-    "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "test": "jest --config ./config/jest/jest.config.ts",
     "sb": "storybook dev -p 6006 -c\"config/storybook\"",
     "sb:build": "storybook build -c\"config/storybook\"",
     "test:ui": "npx loki test",
