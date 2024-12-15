@@ -6,5 +6,77 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"
     },
+    "folderTemplates.structures": [
+      {
+        "name": "t1",
+        "customVariables": ["Cv1"],
+        "omitParentDirectory": false,
+        "structure": [
+          {
+            "fileName": "index.ts",
+            "template": "index",
+          },
+          {
+          "fileName": "ui",
+          "template": "EmptyDirectory",
+          },
+          {
+            "fileName": "ui/<FTName>.tsx",
+            "template": "Tsx with props",
+          },
+          {
+            "fileName": "ui/<FTName>.module.scss",
+            "template": "",
+          },
+          {
+            "fileName": "ui/<FTName>.stories.ts",
+            "template": "Storybook",
+          },
+          {
+            "fileName": "model",
+            "template": "EmptyDirectory",
+          },
+        ]
+      }
+    ],
+    "folderTemplates.fileTemplates": {
+      "Tsx with props": [
+        "import { classNames } from 'shared/lib/classNames/classNames';",
+        "",
+        "import styles from './<FTName>.module.scss';",
+        "",
+        "interface <FTName>Props {",
+        "  className?: string",
+        "}",
+        "",
+        "export const <FTName> = ({ className }: <FTName>Props) => {",
+        "  return (",
+        "    <div className={classNames(styles.<FTName | lowercase>, {}, [className])}>",
+        "      ",
+        "    </div>",
+        "  )",
+        "}",
+      ],
+      "Storybook": [
+        "import type { Meta, StoryObj } from '@storybook/react';",
+        "import { <FTName> } from './<FTName>';",
+        "",
+        "const meta = {",
+        "  title: '<Cv1>/<FTName>',",
+        "  component: <FTName>,",
+        "  args: {},",
+        "} satisfies Meta<typeof <FTName>>;",
+        "",
+        "export default meta;",
+        "type Story = StoryObj<typeof meta>;",
+        "",
+        "export const Primary: Story = {",
+        "  args: {},",
+        "};",
+      ],
+      "index": [
+        "export { <FTName> } from './ui/<FTName>.tsx'"  
+      ]
+    }
     // "eslint.validate": ["javascript", "typescript"]
 }
