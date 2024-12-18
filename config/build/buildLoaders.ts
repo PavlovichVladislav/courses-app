@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import { buildStyleLoaders } from './loaders/buildStyleLoaders';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 interface BuildLoadersOptions {
   isDev: boolean;
@@ -32,45 +33,7 @@ export const buildLoaders = (
     ],
   };
 
-  // const refreshLoader = {
-  //   test: /\.[jt]sx?$/,
-  //   exclude: /node_modules/,
-  //   use: [
-  //     {
-  //       loader: require.resolve('ts-loader'),
-  //       options: {
-  //         getCustomTransformers: () => ({
-  //           before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-  //         }),
-  //         transpileOnly: isDev,
-  //       },
-  //     },
-  //   ],
-  // };
-
-  const babelLoader = {
-    test: /\.(js|jsx|ts|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          ['@babel/preset-env'],
-        ],
-        plugins: [
-          [
-            'i18next-extract',
-            {
-              locales: ['ru', 'en'],
-              keyAsDefaultValue: ['ru'],
-              nsSeparator: '~',
-              keyAsDefaultValueForDerivedKeys: true,
-            },
-          ],
-        ],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader(isDev);
 
   return [
     svgLoader,
@@ -78,6 +41,6 @@ export const buildLoaders = (
     styleLoaders,
     babelLoader,
     typescriptLoader,
-    // refreshLoader,
+    babelLoader,
   ];
 };

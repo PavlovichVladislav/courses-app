@@ -3,8 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildSettings } from './types/config';
-// import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 export const buildPlugins = (
   settings: BuildSettings,
@@ -37,7 +37,6 @@ export const buildPlugins = (
         { from: './public/locales', to: 'locales' },
       ],
     }),
-    // new ReactRefreshWebpackPlugin()
   ];
 
   if (settings.isDev) {
@@ -46,6 +45,8 @@ export const buildPlugins = (
     plugins.push(new BundleAnalyzerPlugin({
       openAnalyzer: false,
     }));
+
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   return plugins;
