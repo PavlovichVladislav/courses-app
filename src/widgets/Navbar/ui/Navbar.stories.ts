@@ -14,18 +14,18 @@ type Story = StoryObj<typeof meta>;
 
 export const LightWithAuth: Story = {
   decorators: [StoreDecorator({
-    user: { authData: { id: 'id', username: 'name' } },
+    user: { authData: { id: 'id', username: 'name' }, _inited: true },
   })],
 };
 
 export const DarkWithAuth: Story = {
   decorators: [ThemeDecorator(Theme.Dark), StoreDecorator({
-    user: { authData: { id: 'id', username: 'name' } },
+    user: { authData: { id: 'id', username: 'name' }, _inited: true },
   })],
 };
 
 export const DarkWhitoutAuth: Story = {
   decorators: [ThemeDecorator(Theme.Dark), StoreDecorator({
-    user: { authData: undefined },
+    user: { authData: undefined, _inited: true },
   })],
 };
