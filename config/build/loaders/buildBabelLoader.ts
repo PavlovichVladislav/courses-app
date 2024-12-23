@@ -17,7 +17,7 @@ export const buildBabelLoader = (isDev: boolean) => ({
             keyAsDefaultValueForDerivedKeys: true,
           },
         ],
-        // isDev && require.resolve('react-refresh/babel'),
+        isDev && require.resolve('react-refresh/babel'),
       ].filter(Boolean),
     },
   },

@@ -17,7 +17,7 @@ export const buildWebpackConfig = (
 
   return {
     devServer: isDev ? buildDevServer(settings) : undefined,
-    mode: mode,
+    mode,
     entry,
     output: {
       filename: '[name].[contenthash].js',

@@ -41,6 +41,5 @@ export const buildLoaders = (
     styleLoaders,
     babelLoader,
     typescriptLoader,
-    babelLoader,
   ];
 };
