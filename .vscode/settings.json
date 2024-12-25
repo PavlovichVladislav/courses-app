@@ -26,7 +26,7 @@
           },
           {
             "fileName": "ui/<FTName>.module.scss",
-            "template": "",
+            "template": "css",
           },
           {
             "fileName": "ui/<FTName>.stories.ts",
@@ -51,11 +51,12 @@
         "",
         "export const <FTName> = ({ className }: <FTName>Props) => {",
         "  return (",
-        "    <div className={classNames(styles.<FTName | lowercase>, {}, [className])}>",
+        "    <div className={classNames(styles.<FTName | camelcase>, {}, [className])}>",
         "      ",
         "    </div>",
-        "  )",
-        "}",
+        "  );",
+        "};",
+        "",
       ],
       "Storybook": [
         "import type { Meta, StoryObj } from '@storybook/react';",
@@ -73,9 +74,16 @@
         "export const Primary: Story = {",
         "  args: {},",
         "};",
+        "",
       ],
       "index": [
-        "export { <FTName> } from './ui/<FTName>.tsx'"  
+        "export { <FTName> } from './ui/<FTName>'"  
+      ],
+      "css": [
+        ".<FTName | camelcase> {",
+        "",
+        "}",
+        "",
       ]
     }
     // "eslint.validate": ["javascript", "typescript"]
