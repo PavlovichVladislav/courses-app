@@ -77,7 +77,8 @@
         "",
       ],
       "index": [
-        "export { <FTName> } from './ui/<FTName>'"  
+        "export { <FTName> } from './ui/<FTName>;'",
+        ""  
       ],
       "css": [
         ".<FTName | camelcase> {",
