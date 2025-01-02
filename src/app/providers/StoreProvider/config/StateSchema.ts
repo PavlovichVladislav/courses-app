@@ -2,17 +2,19 @@ import {
   Action, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+import { ArticleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { NavigateFunction } from 'react-router-dom';
 
 export interface StateSchema {
-  user: UserSchema,
+  user: UserSchema;
 
   // Асинхронные редьюсеры
-  login?: LoginSchema
-  profile?: ProfileSchema
+  login?: LoginSchema;
+  profile?: ProfileSchema;
+  article?: ArticleDetailsSchema;
 }
 
 export type ReducersKey = keyof StateSchema;
