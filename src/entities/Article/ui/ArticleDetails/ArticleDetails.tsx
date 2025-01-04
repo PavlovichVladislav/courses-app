@@ -6,6 +6,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
 import { articleReducer } from '../../model/slice/articleDetailsSlice';
 import styles from './ArticleDetails.module.scss';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
@@ -39,7 +40,15 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
   }, [dispatch, id]);
 
   if (isLoading) {
-    content = <div>{t('Загрузка...')}</div>;
+    content = (
+      <div>
+        <Skeleton className={styles.avatar} width={200} height={200} borderRadius="50%" />
+        <Skeleton className={styles.title} width={300} height={32} />
+        <Skeleton className={styles.skeleton} width={600} height={24} />
+        <Skeleton className={styles.skeleton} width="100%" height={200} />
+        <Skeleton className={styles.skeleton} width="100%" height={200} />
+      </div>
+    );
   } else if (!id || error) {
     content = <Text align={TextAlign.CENTER} title={t('Ошибка при загрузке статьи')} />;
   } else {
