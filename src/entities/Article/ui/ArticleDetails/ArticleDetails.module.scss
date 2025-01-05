@@ -3,6 +3,7 @@
 }
 
 .avatar {
+  display: block;
   margin: 0 auto;
 }
 
@@ -12,4 +13,11 @@
 
 .skeleton {
   margin-top: 15px;
+}
+
+.iconWrapper {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
