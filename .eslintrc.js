@@ -133,6 +133,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'consistent-return': 'off',
+    'react/no-array-index-key': 'off',
   },
   globals: {
     IS_DEV: true,

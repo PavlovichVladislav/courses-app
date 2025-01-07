@@ -4,7 +4,7 @@ export const getArticleDetailsLoading = (state: StateSchema) => state.article?.i
 export const getArticleDetailsError = (state: StateSchema) => state.article?.error || '';
 export const getArticleDetails = (state: StateSchema) => state.article?.article || {
   id: 0,
-  blocks: [''],
+  blocks: [],
   createdAt: '',
   img: '',
   subtitle: '',

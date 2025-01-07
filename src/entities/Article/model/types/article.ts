@@ -17,7 +17,7 @@ export interface ArticleTextBlock extends ArticleBaseBlock {
 
 export interface ArticleImageBlock extends ArticleBaseBlock {
   type: ArticleBlockType.IMAGE;
-  title: string;
+  title?: string;
   src: string;
 }
 
@@ -42,5 +42,5 @@ export interface Article {
   views: number,
   createdAt: string,
   type: ArticleType[],
-  blocks: ArticleBlock[]
+  blocks: ArticleBlock[] | []
 }

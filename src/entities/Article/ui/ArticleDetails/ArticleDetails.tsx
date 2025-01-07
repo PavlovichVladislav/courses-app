@@ -19,6 +19,10 @@ import {
   getArticleDetails,
   getArticleDetailsError,
 } from '../../model/selectors/articleDetails';
+import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -34,16 +38,29 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
   const isLoading = useSelector(getArticleDetailsLoading);
   const error = useSelector(getArticleDetailsError);
   const {
-    title, subtitle, views, createdAt, img,
+    title, subtitle, views, createdAt, img, blocks,
   } = useSelector(getArticleDetails);
 
   const { t } = useTranslation('articleDetails');
 
-  let content: ReactNode;
-
   useEffect(() => {
     dispatch(fetchArticleById(id));
   }, [dispatch, id]);
+
+  const renderBlock = (block: ArticleBlock) => {
+    switch (block.type) {
+    case ArticleBlockType.TEXT:
+      return <ArticleTextBlockComponent key={block.id} block={block} />;
+    case ArticleBlockType.CODE:
+      return <ArticleCodeBlockComponent key={block.id} block={block} />;
+    case ArticleBlockType.IMAGE:
+      return <ArticleImageBlockComponent key={block.id} block={block} />;
+    default:
+      return null;
+    }
+  };
+
+  let content: ReactNode;
 
   if (isLoading) {
     content = (
@@ -69,6 +86,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
         <div className={styles.iconWrapper}>
           <Icon Svg={DateIcon} />
           <Text text={`${createdAt}`} />
+        </div>
+        <div className={styles.blocksWrapper}>
+          {blocks.map(renderBlock)}
         </div>
       </>
     );
