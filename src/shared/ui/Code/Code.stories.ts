@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: `
+    text: `
       import type { Meta, StoryObj } from '@storybook/react';
       import { Code } from './Code';
 

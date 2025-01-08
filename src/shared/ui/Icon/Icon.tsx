@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { FunctionComponent, SVGProps } from 'react';
+import { FunctionComponent, memo, SVGProps } from 'react';
 
 import styles from './Icon.module.scss';
 
@@ -10,8 +10,8 @@ interface IconProps {
   >;
 }
 
-export const Icon = ({ className, Svg }: IconProps) => {
+export const Icon = memo(({ className, Svg }: IconProps) => {
   return (
     <Svg className={classNames(styles.icon, {}, [className])} />
   );
-};
+});

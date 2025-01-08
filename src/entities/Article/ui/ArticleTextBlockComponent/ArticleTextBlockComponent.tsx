@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
+import { memo } from 'react';
 import { ArticleTextBlock } from '../../model/types/article';
 
 import styles from './ArticleTextBlockComponent.module.scss';
@@ -9,7 +10,7 @@ interface ArticleTextBlockComponentProps {
   block: ArticleTextBlock;
 }
 
-export const ArticleTextBlockComponent = ({ className, block }: ArticleTextBlockComponentProps) => {
+export const ArticleTextBlockComponent = memo(({ className, block }: ArticleTextBlockComponentProps) => {
   const { paragraphs, title } = block;
 
   return (
@@ -18,4 +19,4 @@ export const ArticleTextBlockComponent = ({ className, block }: ArticleTextBlock
       {paragraphs.map((paragraph, index) => <Text text={paragraph} key={index} className={styles.paragraph} />)}
     </div>
   );
-};
+});

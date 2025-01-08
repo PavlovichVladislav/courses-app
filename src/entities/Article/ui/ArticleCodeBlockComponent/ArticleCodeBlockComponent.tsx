@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-
 import { Code } from 'shared/ui/Code/Code';
-import styles from './ArticleCodeBlockComponent.module.scss';
+import { memo } from 'react';
 import { ArticleCodeBlock } from '../../model/types/article';
 
 interface ArticleCodeBlockComponentProps {
@@ -9,12 +8,10 @@ interface ArticleCodeBlockComponentProps {
   block: ArticleCodeBlock;
 }
 
-export const ArticleCodeBlockComponent = ({ className, block }: ArticleCodeBlockComponentProps) => {
+export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCodeBlockComponentProps) => {
   return (
-    <div className={classNames(styles.ArticleCodeBlockComponent, {}, [className])}>
-      <Code>
-        {block.code}
-      </Code>
+    <div className={classNames('', {}, [className])}>
+      <Code text={block.code} />
     </div>
   );
-};
+});
