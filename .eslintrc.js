@@ -147,5 +147,11 @@ module.exports = {
         'i18next/no-literal-string': 'off',
       },
     },
+    {
+      files: ['*.stories.{ts,tsx}'],
+      rules: {
+        'max-len': 'off',
+      },
+    },
   ],
 };
