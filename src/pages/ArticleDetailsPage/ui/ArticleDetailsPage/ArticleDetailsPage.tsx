@@ -20,7 +20,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   return (
     <div className={classNames(styles.articleDetailsPage, {}, [className])}>
       <ArticleDetails id={id} />
-      <Text className={styles.commentTitle} title={t('Комментарии')} />
+      <Text title={t('Комментарии')} />
       <CommentList
         comments={[
           {

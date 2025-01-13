@@ -3,12 +3,14 @@
     {
       "id": "1",
       "title": "json-server",
-      "userId": 1
+      "userId": 1,
+      "avatar": "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
     },
     {
       "id": "2",
       "title": "json-server",
-      "userId": 2
+      "userId": 2,
+      "avatar": "https://w7.pngwing.com/pngs/270/712/png-transparent-hacker-computer-technology-mathematics-computer-thumbnail.png"
     }
   ],
   "articles": [
