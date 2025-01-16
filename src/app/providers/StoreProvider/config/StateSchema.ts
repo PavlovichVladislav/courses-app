@@ -6,6 +6,7 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { NavigateFunction } from 'react-router-dom';
 
 export interface StateSchema {
@@ -14,7 +15,8 @@ export interface StateSchema {
   // Асинхронные редьюсеры
   login?: LoginSchema;
   profile?: ProfileSchema;
-  article?: ArticleDetailsSchema;
+  articleDetails?: ArticleDetailsSchema;
+  articleDetailsComments: ArticleDetailsCommentsSchema;
 }
 
 export type ReducersKey = keyof StateSchema;

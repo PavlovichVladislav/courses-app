@@ -16,7 +16,7 @@ const article: Article = {
 describe('getArticleDetails', () => {
   test('should return article state', () => {
     const state: Partial<StateSchema> = {
-      article: {
+      articleDetails: {
         article,
         isLoading: false,
       },
@@ -44,7 +44,7 @@ describe('getArticleDetails', () => {
 describe('getArticleDetailsError', () => {
   test('should return error', () => {
     const state: Partial<StateSchema> = {
-      article: {
+      articleDetails: {
         isLoading: false,
         error: 'error',
       },
@@ -63,7 +63,7 @@ describe('getArticleDetailsError', () => {
 describe('getArticleDetailsLoading', () => {
   test('should return loading state', () => {
     const state: Partial<StateSchema> = {
-      article: {
+      articleDetails: {
         isLoading: true,
       },
     };

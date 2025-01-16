@@ -1,7 +1,5 @@
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
-import { articleActions, articleReducer } from './articleDetailsSlice';
+import { articleDetailsReducer } from './articleDetailsSlice';
 import { Article, ArticleType } from '../types/article';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
 
@@ -21,7 +19,7 @@ describe('articleDetailsSlice.test', () => {
     const state: Partial<ArticleDetailsSchema> = {
       isLoading: false,
     };
-    expect(articleReducer(
+    expect(articleDetailsReducer(
       state as ArticleDetailsSchema,
       fetchArticleById.pending('', '1'),
     )).toEqual({ isLoading: true, validateErrors: undefined });
@@ -31,7 +29,7 @@ describe('articleDetailsSlice.test', () => {
     const state: Partial<ArticleDetailsSchema> = {
       isLoading: true,
     };
-    expect(articleReducer(
+    expect(articleDetailsReducer(
       state as ArticleDetailsSchema,
       fetchArticleById.fulfilled(article, '', '1'),
     )).toEqual({

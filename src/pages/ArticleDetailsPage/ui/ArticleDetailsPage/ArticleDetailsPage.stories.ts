@@ -117,7 +117,7 @@ const article: Article = {
 export const Primary: Story = {
   args: {},
   decorators: [StoreDecorator({
-    article: {
+    articleDetails: {
       isLoading: false,
       article,
     },

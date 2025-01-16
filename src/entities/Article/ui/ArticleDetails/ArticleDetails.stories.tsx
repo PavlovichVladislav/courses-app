@@ -119,7 +119,7 @@ export const Primary: Story = {
     id: '1',
   },
   decorators: [StoreDecorator({
-    article: {
+    articleDetails: {
       isLoading: false,
       article,
     },
@@ -131,7 +131,7 @@ export const Loading: Story = {
     id: '1',
   },
   decorators: [StoreDecorator({
-    article: {
+    articleDetails: {
       isLoading: true,
     },
   })],
@@ -142,7 +142,7 @@ export const Error: Story = {
     id: '1',
   },
   decorators: [StoreDecorator({
-    article: {
+    articleDetails: {
       isLoading: false,
       error: 'Ошибка при загрузке статьи',
     },
