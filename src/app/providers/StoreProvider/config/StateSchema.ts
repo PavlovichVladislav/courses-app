@@ -16,7 +16,7 @@ export interface StateSchema {
   login?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
-  articleDetailsComments: ArticleDetailsCommentsSchema;
+  articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type ReducersKey = keyof StateSchema;
