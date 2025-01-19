@@ -8,11 +8,14 @@ import { useTranslation } from 'react-i18next';
 import { CommentList } from 'entities/Comment';
 
 import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
+import { useSelector } from 'react-redux';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
   articleDetailsCommentReducer,
   getArticleComments,
-} from 'pages/ArticleDetailsPage/model/slces/articleDetailsCommentsSlice';
-import { useSelector } from 'react-redux';
+} from '../../model/slces/articleDetailsCommentsSlice';
 import styles from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsLoading } from '../../model/selectors/comments';
 
@@ -29,6 +32,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { t } = useTranslation();
   const comments = useSelector(getArticleComments.selectAll);
   const isLoading = useSelector(getArticleCommentsLoading);
+  const dispatch = useAppDispatch();
+
+  useInitialEffect(() => {
+    dispatch(fetchCommentsByArticleId(id));
+  });
 
   return (
     <DynamicModuleLoader reducers={reducers} reducerName="articleDetailsComments">

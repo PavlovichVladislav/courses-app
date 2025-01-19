@@ -5,6 +5,7 @@ import {
 import { StateSchema } from 'app/providers/StoreProvider';
 import { CommentItem } from 'entities/Comment';
 import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
+import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 const commentsAdapter = createEntityAdapter<CommentItem>();
 
@@ -17,21 +18,25 @@ const articleDetailsCommentsSlice = createSlice({
   initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
     error: '',
     isLoading: false,
-    ids: ['1', '2'],
-    entities: {
-      1: {
-        id: '1',
-        user: { id: '1', username: 'Vlad' },
-        text: 'comment text',
-      },
-      2: {
-        id: '2',
-        user: { id: '1', username: 'Vlad' },
-        text: 'comment text 2',
-      },
-    },
+    ids: [],
+    entities: {},
   }),
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCommentsByArticleId.pending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+      })
+      .addCase(fetchCommentsByArticleId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        commentsAdapter.setAll(state, action.payload);
+      })
+      .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { reducer: articleDetailsCommentReducer } = articleDetailsCommentsSlice;
