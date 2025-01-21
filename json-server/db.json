@@ -124,14 +124,28 @@
       "role": "USER"
     }
   ],
-  "profile": {
-    "firstname": "Vladislav",
-    "lastname": "Pavlovich",
-    "age": 22,
-    "currency": "USD",
-    "country": "Belarus",
-    "city": "Moscow",
-    "username": "main admin",
-    "avatar": "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
-  }
+  "profile": [
+    {
+      "id": "1", 
+      "firstname": "Vladislav",
+      "lastname": "Pavlovich",
+      "age": 22,
+      "currency": "USD",
+      "country": "Belarus",
+      "city": "Moscow",
+      "username": "main admin",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
+    },
+    {
+      "id": "2", 
+      "firstname": "Geogre",
+      "lastname": "Saakyan",
+      "age": 22,
+      "currency": "USD",
+      "country": "Belarus",
+      "city": "Moscow",
+      "username": "main admin",
+      "avatar": "https://static.vecteezy.com/system/resources/thumbnails/029/621/646/small/hacker-with-laptop-hacking-computer-system-isolated-on-transparent-background-png.png"
+    }
+  ]
 }

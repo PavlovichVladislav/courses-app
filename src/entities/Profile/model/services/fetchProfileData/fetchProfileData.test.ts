@@ -6,6 +6,7 @@ import { fetchProfileData } from './fetchProfileData';
 jest.mock('axios');
 
 const data = {
+  id: '1',
   firstname: 'Vladislav',
   lastname: 'Pavlovich',
   age: 22,
@@ -23,7 +24,7 @@ describe('fetchProfileData test', () => {
       data,
     }));
 
-    const result = await testAsyncThunk.callThunk();
+    const result = await testAsyncThunk.callThunk('1');
 
     expect(testAsyncThunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('fulfilled');
@@ -34,7 +35,7 @@ describe('fetchProfileData test', () => {
     const testAsyncThunk = new TestAsyncThunk(fetchProfileData);
     testAsyncThunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
 
-    const result = await testAsyncThunk.callThunk();
+    const result = await testAsyncThunk.callThunk('1');
 
     expect(testAsyncThunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('rejected');

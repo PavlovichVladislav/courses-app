@@ -3,13 +3,13 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AxiosError } from 'axios';
 import { Profile } from '../../types/profile';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<string>>(
   'profile/fetchProfileData',
-  async (_, { rejectWithValue, extra }) => {
+  async (profileId, { rejectWithValue, extra }) => {
     try {
       const { api } = extra;
 
-      const response = await api.get<Profile>('/profile');
+      const response = await api.get<Profile>(`/profile/${profileId}`);
 
       if (!response.data) {
         throw new Error('Empty server response');

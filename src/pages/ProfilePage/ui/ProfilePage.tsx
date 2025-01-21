@@ -13,13 +13,14 @@ import {
   profileReducer,
   ValidateProfileError,
 } from 'entities/Profile';
-import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHader } from './ProfilePageHader/ProfilePageHader';
 
 interface ProfilePageProps {
@@ -37,14 +38,15 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const error = useSelector(getProfileError);
   const validateErrors = useSelector(getValidatePorfileErrors);
   const { t } = useTranslation();
+  const { id } = useParams();
 
   const readOnly = useSelector(getProfileReadonly);
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
     }
-  }, [dispatch]);
+  });
 
   const validateProfileErrors = {
     [ValidateProfileError.EMPTY_PROFILE_DATA]: t('Пустой профиль'),
