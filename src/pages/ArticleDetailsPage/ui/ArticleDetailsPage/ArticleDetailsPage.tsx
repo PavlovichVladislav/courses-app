@@ -11,6 +11,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
   articleDetailsCommentReducer,
@@ -43,6 +44,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
       <div className={classNames(styles.articleDetailsPage, {}, [className])}>
         <ArticleDetails id={id} />
         <Text title={t('Комментарии')} />
+        <AddCommentForm />
         <CommentList
           comments={comments}
           isLoading={isLoading}

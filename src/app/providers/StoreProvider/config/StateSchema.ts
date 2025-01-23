@@ -5,6 +5,7 @@ import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { NavigateFunction } from 'react-router-dom';
@@ -17,6 +18,7 @@ export interface StateSchema {
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
 }
 
 export type ReducersKey = keyof StateSchema;
