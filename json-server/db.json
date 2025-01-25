@@ -21,7 +21,9 @@
       "img": "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       "views": 1034,
       "createdAt": "25.04.2024",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -108,6 +110,24 @@
       "text": "some comment 4",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "text": "1234",
+      "articleId": "1",
+      "userId": "1",
+      "id": "j5CQyz1"
+    },
+    {
+      "text": "another comment",
+      "articleId": "1",
+      "userId": "2",
+      "id": "aUmIYq8"
+    },
+    {
+      "text": "new comment",
+      "articleId": "1",
+      "userId": "2",
+      "id": "VtxKjNp"
     }
   ],
   "users": [
@@ -126,7 +146,7 @@
   ],
   "profile": [
     {
-      "id": "1", 
+      "id": "1",
       "firstname": "Vladislav",
       "lastname": "Pavlovich",
       "age": 22,
@@ -137,7 +157,7 @@
       "avatar": "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
     },
     {
-      "id": "2", 
+      "id": "2",
       "firstname": "Geogre",
       "lastname": "Saakyan",
       "age": 22,

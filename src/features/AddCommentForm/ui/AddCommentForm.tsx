@@ -8,25 +8,31 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
 import { useCallback } from 'react';
 import styles from './AddCommentForm.module.scss';
-import { getCommetFormText } from '../model/selectors/addCommentFormSelectors';
+import { getAddCommentFormText } from '../model/selectors/addCommentFormSelectors';
 import { addCommentFormActions, addCommentFormReducer } from '../model/slice/addCommentFormSlice';
 
 interface AddCommentFormProps {
   className?: string
+  sendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {
   addCommentForm: addCommentFormReducer,
 };
 
-const AddCommentForm = ({ className }: AddCommentFormProps) => {
+const AddCommentForm = ({ className, sendComment }: AddCommentFormProps) => {
   const { t } = useTranslation();
-  const commentFormText = useSelector(getCommetFormText);
+  const commentFormText = useSelector(getAddCommentFormText);
   const dispatch = useAppDispatch();
 
   const onCommentTextChange = useCallback((text: string) => {
     dispatch(addCommentFormActions.setText(text));
   }, [dispatch]);
+
+  const onSendComment = () => {
+    sendComment(commentFormText);
+    dispatch(addCommentFormActions.setText(''));
+  };
 
   return (
     <DynamicModuleLoader reducers={reducers} reducerName="addCommentForm">
@@ -37,7 +43,12 @@ const AddCommentForm = ({ className }: AddCommentFormProps) => {
           value={commentFormText}
           onChange={onCommentTextChange}
         />
-        <Button theme={ButtonTheme.OUTLINE}>{t('Отправить')}</Button>
+        <Button
+          theme={ButtonTheme.OUTLINE}
+          onClick={onSendComment}
+        >
+          {t('Отправить')}
+        </Button>
       </div>
     </DynamicModuleLoader>
   );
