@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { ISidebarItem } from '../../model/item';
 
 import styles from './SidebarItem.module.scss';
@@ -15,6 +16,7 @@ interface SidebarItemProps {
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
   const { t } = useTranslation();
   const isAuth = useSelector(getUserAuthData);
+  const authData = useSelector(getUserAuthData);
 
   if (!isAuth && item.authOnly) {
     return null;
@@ -23,7 +25,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
   return (
     <AppLink
       theme={AppLinkTheme.INVERTED}
-      to={item.path}
+      to={RoutePath.profile === item.path ? `${item.path}${authData.id}` : item.path}
       icon={<item.Icon className={styles.icon} />}
       collapsed={collapsed}
     >

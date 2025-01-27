@@ -12,12 +12,13 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
       const { api } = extra;
       const profileFormData = getProfileFormData(getState());
       const validateErrors = validateProfileData(profileFormData);
+      const profileId = profileFormData.id;
 
       if (validateErrors.length) {
         return rejectWithValue(validateErrors);
       }
 
-      const response = await api.put<Profile>('/profile', profileFormData);
+      const response = await api.put<Profile>(`/profile/${profileId}`, profileFormData);
 
       if (!response.data) {
         throw new Error('Empty server response');

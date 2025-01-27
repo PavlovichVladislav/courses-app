@@ -3,6 +3,7 @@ import { Country } from 'entities/Country';
 import { ValidateProfileError } from '../services/validateProfileData/validateProfileData';
 
 export interface Profile {
+  id?: string;
   firstname?: string,
   lastname?: string,
   age?: number,

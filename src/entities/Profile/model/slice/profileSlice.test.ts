@@ -14,6 +14,7 @@ const profileData = {
   city: 'Moscow',
   username: 'main admin',
   avatar: 'avatar',
+  id: '1',
 };
 
 const formData = {
@@ -25,6 +26,7 @@ const formData = {
   city: 'Moscow',
   username: 'main admin',
   avatar: 'avatar',
+  id: '1',
 };
 
 describe('profileSlice.test', () => {

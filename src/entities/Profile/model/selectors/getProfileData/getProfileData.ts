@@ -11,4 +11,5 @@ export const getProfileData = (state: StateSchema) => state.profile?.profileData
   city: '',
   username: '',
   avatar: '',
+  id: '1',
 };
