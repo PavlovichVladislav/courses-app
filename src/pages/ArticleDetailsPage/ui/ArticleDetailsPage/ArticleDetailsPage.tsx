@@ -14,7 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
-  articleDetailsCommentReducer,
+  articleDetailsCommentsReducer,
   getArticleComments,
 } from '../../model/slces/articleDetailsCommentsSlice';
 import styles from './ArticleDetailsPage.module.scss';
@@ -26,7 +26,7 @@ interface ArticleDetailsPageProps {
 }
 
 const reducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentReducer,
+  articleDetailsComments: articleDetailsCommentsReducer,
 };
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 const meta = {
-  title: 'entities/CommentList',
+  title: 'entities/Comment/CommentList',
   component: CommentList,
   args: {},
 } satisfies Meta<typeof CommentList>;
@@ -25,5 +25,12 @@ export const Primary: Story = {
       },
     ],
     isLoading: false,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    comments: [],
+    isLoading: true,
   },
 };

@@ -11,7 +11,7 @@ import styles from './CommentCard.module.scss';
 
 interface CommentCardProps {
   className?: string;
-  comment: CommentItem;
+  comment?: CommentItem;
   isLoading: boolean;
 }
 
@@ -24,10 +24,15 @@ export const CommentCard = ({ className, comment, isLoading }: CommentCardProps)
             <Skeleton width={30} height={30} borderRadius="50%" />
             <Skeleton width={100} height={16} />
           </div>
-          <Skeleton width={130} height={30} />
+          <Skeleton width="100%" height={30} />
         </>
       );
     }
+
+    if (!comment) {
+      return null;
+    }
+
     return (
       <>
         <AppLink to={`${RoutePath.profile}${comment.user.id}`} className={styles.header}>
@@ -40,7 +45,7 @@ export const CommentCard = ({ className, comment, isLoading }: CommentCardProps)
   };
 
   return (
-    <div className={classNames(styles.commentCard, {}, [className])}>
+    <div className={classNames(styles.commentCard, { [styles.loading]: isLoading }, [className])}>
       {renderContent(isLoading)}
     </div>
   );
