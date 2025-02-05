@@ -35,8 +35,8 @@ export enum ArticleType {
 }
 
 export enum ArticleView {
-  GRID = 'GRID',
-  LIST = 'LIST'
+  GRID = 'grid',
+  LIST = 'list'
 }
 
 export interface Article {

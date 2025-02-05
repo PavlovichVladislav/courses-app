@@ -13,9 +13,9 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
-  if (view === ArticleView.LIST) {
+  if (view === ArticleView.GRID) {
     return (
-      <div className={classNames(styles.ArticleListItem, {}, [className])}>
+      <div className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
         <div className={styles.card}>
           <div className={styles.imageWrapper}>
             <img src={article.img} alt="Изображение статьи" className={styles.img} />
@@ -23,7 +23,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
           </div>
           <div className={styles.infoWrapper}>
             <Text text={article.type.join(', ')} className={styles.types} />
-            <Text text={String(article.views)} />
+            <Text text={String(article.views)} className={styles.views} />
             <Icon Svg={ViewsIcon} />
           </div>
           <Text text={article.title} className={styles.title} />

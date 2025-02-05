@@ -1,8 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import styles from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+
+import styles from './ArticleList.module.scss';
 
 interface ArticleListProps {
   className?: string;
@@ -18,8 +19,9 @@ export const ArticleList = ({
     <ArticleListItem article={article} view={view} />
   );
 
+  if (isLoading) return 'загрузка';
   return (
-    <div className={classNames(styles.ArticleList, {}, [className])}>
+    <div className={classNames(styles.articleList, {}, [className])}>
       {articles.length > 0 ? (
         articles.map(renderArticle)
       ) : null}
