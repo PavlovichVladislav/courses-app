@@ -1,15 +1,59 @@
-.list {
-  .card {
-    display: block;
-  }
+.grid {
+  width: 230px;
+  transition: 0.2s;
 
   .imageWrapper {
     width: 200px;
     height: 200px;
+    position: relative;
   }
-
+  
   .img {
     width: 200px;
     height: 200px;
   }
+  
+  .date {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .infoWrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .types p {
+    width: 115px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .views {
+    margin-left: auto;
+    margin-right: 8px;
+  } 
+  
+  .title p {
+    width: 200px;
+    margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.01);
+
+    .date {
+      display: block;
+    }
+  }
 }
+

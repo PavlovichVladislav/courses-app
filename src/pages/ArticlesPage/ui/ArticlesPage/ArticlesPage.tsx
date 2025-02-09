@@ -17,7 +17,7 @@ const articles = [
     views: 1034,
     createdAt: '25.04.2024',
     type: [
-      'IT',
+      'IT', 'IT', 'IT', 'ECONOMIC', 'NOTIFICATIONS',
     ],
     blocks: [
       {

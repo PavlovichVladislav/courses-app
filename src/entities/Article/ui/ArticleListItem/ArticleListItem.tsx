@@ -4,6 +4,7 @@ import { Article, ArticleView } from 'entities/Article/model/types/article';
 import { Text } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import ViewsIcon from 'shared/assets/icons/views.svg';
+import { Card } from 'shared/ui/Card';
 import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
@@ -16,7 +17,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
   if (view === ArticleView.GRID) {
     return (
       <div className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
-        <div className={styles.card}>
+        <Card>
           <div className={styles.imageWrapper}>
             <img src={article.img} alt="Изображение статьи" className={styles.img} />
             <Text text={article.createdAt} className={styles.date} />
@@ -27,7 +28,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
             <Icon Svg={ViewsIcon} />
           </div>
           <Text text={article.title} className={styles.title} />
-        </div>
+        </Card>
       </div>
     );
   }

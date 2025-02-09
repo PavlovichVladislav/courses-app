@@ -16,7 +16,7 @@ export const ArticleList = ({
   className, articles, isLoading, view,
 }: ArticleListProps) => {
   const renderArticle = (article: Article) => (
-    <ArticleListItem article={article} view={view} />
+    <ArticleListItem article={article} view={view} key={article.id} />
   );
 
   if (isLoading) return 'загрузка';
