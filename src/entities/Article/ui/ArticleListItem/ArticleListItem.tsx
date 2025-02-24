@@ -5,6 +5,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import ViewsIcon from 'shared/assets/icons/views.svg';
 import { Card } from 'shared/ui/Card';
+import { useHover } from 'shared/lib/hooks/useHover';
 import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
@@ -14,9 +15,12 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
+  const [isHover, bindHover] = useHover();
+  console.log(isHover);
+
   if (view === ArticleView.GRID) {
     return (
-      <div className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
+      <div {...bindHover} className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
         <Card>
           <div className={styles.imageWrapper}>
             <img src={article.img} alt="Изображение статьи" className={styles.img} />
