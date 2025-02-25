@@ -6,6 +6,10 @@ const article: Article = {
   id: 0,
   blocks: [],
   createdAt: '',
+  user: {
+    id: '1',
+    username: 'admin',
+  },
   img: '',
   subtitle: '',
   title: '',

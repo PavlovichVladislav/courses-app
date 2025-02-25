@@ -20,6 +20,10 @@ const article: Article = {
     'https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
   views: 1034,
   createdAt: '25.04.2024',
+  user: {
+    id: '1',
+    username: 'admin',
+  },
   type: [ArticleType.IT],
   blocks: [
     {

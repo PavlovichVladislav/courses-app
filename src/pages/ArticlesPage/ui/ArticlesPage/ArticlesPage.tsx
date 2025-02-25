@@ -16,6 +16,11 @@ const articles = [
     img: 'https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
     views: 1034,
     createdAt: '25.04.2024',
+    user: {
+      id: '1',
+      username: 'admin',
+      avatar: 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png',
+    },
     type: [
       'IT', 'IT', 'IT', 'ECONOMIC', 'NOTIFICATIONS',
     ],
@@ -86,7 +91,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   return (
     <div className={classNames(styles.articlesPage, {}, [className])}>
       {/* @ts-ignore */}
-      <ArticleList articles={articles} isLoading={false} view={ArticleView.GRID} />
+      <ArticleList articles={articles} isLoading={false} view={ArticleView.LIST} />
     </div>
   );
 };

@@ -1,5 +1,11 @@
-.articleList {
+.grid {
   display: flex;
   flex-wrap: wrap;
+  gap: 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
   gap: 30px;
 }

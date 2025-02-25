@@ -21,7 +21,7 @@ export const ArticleList = ({
 
   if (isLoading) return 'загрузка';
   return (
-    <div className={classNames(styles.articleList, {}, [className])}>
+    <div className={classNames(styles.articleList, {}, [className, styles[view]])}>
       {articles.length > 0 ? (
         articles.map(renderArticle)
       ) : null}

@@ -10,6 +10,10 @@ const article: Article = {
   createdAt: '',
   img: '',
   subtitle: '',
+  user: {
+    id: '1',
+    username: 'admin',
+  },
   title: '',
   type: [ArticleType.ECONOMICS],
   views: 0,
