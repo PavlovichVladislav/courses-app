@@ -7,6 +7,8 @@ import ViewsIcon from 'shared/assets/icons/views.svg';
 import { Card } from 'shared/ui/Card';
 import { useHover } from 'shared/lib/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
@@ -16,16 +18,36 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
+  const { t } = useTranslation();
   const [isHover, bindHover] = useHover();
   console.log(isHover);
+
+  const types = <Text text={article.type.join(', ')} className={styles.types} />;
+  const views = (
+    <>
+      <Text text={String(article.views)} className={styles.views} />
+      <Icon Svg={ViewsIcon} />
+    </>
+  );
 
   if (view === ArticleView.LIST) {
     return (
       <div {...bindHover} className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
         <Card>
-          <Avatar src={article.user.avatar} className={styles.avatar} />
-          <Text text={article.user.username} className={styles.username} />
-          <Text text={article.createdAt} className={styles.date} />
+          <div className={styles.header}>
+            <Avatar src={article.user.avatar} className={styles.avatar} />
+            <Text text={article.user.username} className={styles.username} />
+            <Text text={article.createdAt} className={styles.date} />
+          </div>
+          <Text title={article.title} className={styles.title} />
+          {types}
+          <img className={styles.img} alt={article.title} src={article.img} />
+          <div className={styles.footer}>
+            <Button theme={ButtonTheme.OUTLINE}>
+              {t('Читать далее')}
+            </Button>
+            {views}
+          </div>
         </Card>
       </div>
     );
@@ -40,9 +62,8 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
             <Text text={article.createdAt} className={styles.date} />
           </div>
           <div className={styles.infoWrapper}>
-            <Text text={article.type.join(', ')} className={styles.types} />
-            <Text text={String(article.views)} className={styles.views} />
-            <Icon Svg={ViewsIcon} />
+            {types}
+            {views}
           </div>
           <Text text={article.title} className={styles.title} />
         </Card>
