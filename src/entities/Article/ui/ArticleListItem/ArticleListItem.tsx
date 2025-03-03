@@ -35,7 +35,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
       <div {...bindHover} className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
         <Card>
           <div className={styles.header}>
-            <Avatar src={article.user.avatar} className={styles.avatar} />
+            <Avatar src={article.user.avatar} className={styles.avatar} size={30} />
             <Text text={article.user.username} className={styles.username} />
             <Text text={article.createdAt} className={styles.date} />
           </div>
