@@ -11,6 +11,9 @@ import { useHover } from 'shared/lib/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import styles from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
@@ -23,7 +26,12 @@ interface ArticleListItemProps {
 export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
   const { t } = useTranslation();
   const [isHover, bindHover] = useHover();
+  const navigate = useNavigate();
   console.log(isHover);
+
+  const onOpenArticle = useCallback(() => {
+    navigate(`${RoutePath.article_details}${article.id}`);
+  }, [navigate, article.id]);
 
   const types = <Text text={article.type.join(', ')} className={styles.types} />;
   const views = (
@@ -53,7 +61,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
             <ArticleTextBlockComponent block={textBlock} className={styles.textBlock} />
           )}
           <div className={styles.footer}>
-            <Button theme={ButtonTheme.OUTLINE}>
+            <Button theme={ButtonTheme.OUTLINE} onClick={onOpenArticle}>
               {t('Читать далее')}
             </Button>
             {views}
@@ -65,7 +73,11 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
 
   if (view === ArticleView.GRID) {
     return (
-      <div {...bindHover} className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
+      <div
+        {...bindHover}
+        className={classNames(styles.articleListItem, {}, [className, styles[view]])}
+        onClick={onOpenArticle}
+      >
         <Card>
           <div className={styles.imageWrapper}>
             <img src={article.img} alt="Изображение статьи" className={styles.img} />
