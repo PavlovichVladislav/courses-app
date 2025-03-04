@@ -27,6 +27,12 @@
     margin: 16px 0;
   }
 
+  .textBlock {
+    max-height: 200px;
+    overflow-y: hidden;
+    margin-bottom: 16px;
+  }
+
   .footer {
     display: flex;
     align-items: center;
