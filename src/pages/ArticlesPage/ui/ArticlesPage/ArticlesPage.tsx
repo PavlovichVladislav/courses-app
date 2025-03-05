@@ -167,7 +167,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   return (
     <div className={classNames(styles.articlesPage, {}, [className])}>
       {/* @ts-ignore */}
-      <ArticleList articles={articles} isLoading={false} view={ArticleView.LIST} />
+      <ArticleList articles={articles} isLoading view={ArticleView.GRID} />
     </div>
   );
 };
