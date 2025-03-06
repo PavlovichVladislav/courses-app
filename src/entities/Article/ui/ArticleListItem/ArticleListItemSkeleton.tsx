@@ -14,21 +14,18 @@ export const ArticleListItemSkeleton = ({ className, view }: ArticleListItemSkel
   if (view === ArticleView.LIST) {
     return (
       <div className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
-        {/* <Card>
+        <Card>
           <div className={styles.header}>
-            <Avatar src={article.user.avatar} className={styles.avatar} size={30} />
-            <Text text={article.user.username} className={styles.username} />
-            <Text text={article.createdAt} className={styles.date} />
+            <Skeleton borderRadius="50%" width={30} height={30} className={styles.avatar} />
+            <Skeleton width={150} height={16} className={styles.username} />
+            <Skeleton width={150} height={16} className={styles.date} />
           </div>
-          <Text title={article.title} className={styles.title} />
-          <img className={styles.img} alt={article.title} src={article.img} />
-          <ArticleTextBlockComponent block={textBlock} className={styles.textBlock} />
+          <Skeleton width={250} height={24} className={styles.title} />
+          <Skeleton height={200} className={styles.img} />
           <div className={styles.footer}>
-            <Button theme={ButtonTheme.OUTLINE} onClick={onOpenArticle}>
-              {t('Читать далее')}
-            </Button>
+            <Skeleton height={36} width={200} />
           </div>
-        </Card> */}
+        </Card>
       </div>
     );
   }
