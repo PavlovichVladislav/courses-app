@@ -1,0 +1,23 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { ThemeDecorator } from 'shared/config/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import { PageError } from './PageError';
+
+const meta = {
+  title: 'widgets/PageError',
+  component: PageError,
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  // },
+  // args: { onClick: fn() },
+} satisfies Meta<typeof PageError>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Light: Story = {
+};
+
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.Dark)],
+};

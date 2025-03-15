@@ -1,0 +1,30 @@
+.articleDetails {
+  min-height: 100%;
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.skeleton {
+  margin-top: 15px;
+}
+
+.iconWrapper {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.blocksWrapper {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

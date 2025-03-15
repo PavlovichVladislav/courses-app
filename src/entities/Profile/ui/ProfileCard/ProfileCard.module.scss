@@ -1,0 +1,26 @@
+.profileCard {
+  width: 640px;
+  padding: 20px;
+  border: 2px solid var(--inverted-bg-color);
+}
+
+.editing {
+  border: 2px solid var(--inverted-primary-color);
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+}

@@ -2,20 +2,28 @@ import path from 'path';
 import webpack from 'webpack';
 
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-import { BuildPaths } from './config/build/types/config';
+import { BuildEnv, BuildPaths } from './config/build/types/config';
 
 const paths: BuildPaths = {
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
-    output: path.resolve(__dirname, 'dist'),
-    html: path.resolve(__dirname, 'public' , 'index.html')
-}
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
+  output: path.resolve(__dirname, 'build'),
+  html: path.resolve(__dirname, 'public', 'index.html'),
+  src: path.resolve(__dirname, 'src'),
+};
 
-const mode = 'development';
+export default (env: BuildEnv): webpack.Configuration => {
+  const { mode, port } = env;
+  const isDev = mode === 'development';
+  const apiUrl = env.apiUrl || 'http://localhost:8000';
 
-const config: webpack.Configuration = buildWebpackConfig({
-    mode,
+  const config = buildWebpackConfig({
+    mode: mode || 'development',
     paths,
-    isDev: mode === 'development'
-});
+    isDev,
+    port: port || 4001,
+    apiUrl,
+    project: 'frontend',
+  });
 
-export default config;
+  return config;
+};

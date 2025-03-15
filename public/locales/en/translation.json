@@ -1,0 +1,17 @@
+{
+  "Привет": "Welcome",
+  "Главная страница": "root page",
+  "Страница информации": "about page",
+  "Язык": "English",
+  "Страница не найдена": "Not found page",
+  "Произошла ошибка": "Something went wrong",
+  "Перезагрузить": "Reload",
+  "Сокращённый_Язык": "En",
+  "Введите логин": "Enter login",
+  "Введите пароль": "Enter password",
+  "Войти": "Log in",
+  "Неверные данные для входа": "Invalid login details",
+  "Аутентификация": "Authentication",
+  "Выйти": "Log out",
+  "Профиль": "Profile"
+}
