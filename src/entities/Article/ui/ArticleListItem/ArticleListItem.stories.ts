@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ArticleList } from './ArticleList';
+import { ArticleListItem } from './ArticleListItem';
 import {
   Article, ArticleBlockType, ArticleType, ArticleView,
 } from '../../model/types/article';
 
 const meta = {
-  title: 'entities/ArticleList',
-  component: ArticleList,
+  title: 'entities/ArticleListItem',
+  component: ArticleListItem,
   args: {},
-} satisfies Meta<typeof ArticleList>;
+} satisfies Meta<typeof ArticleListItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -121,32 +121,14 @@ const article: Article = {
 
 export const Grid: Story = {
   args: {
-    articles: [article, article],
-    isLoading: false,
-    view: ArticleView.GRID,
-  },
-};
-
-export const GridLoading: Story = {
-  args: {
-    articles: [],
-    isLoading: true,
+    article,
     view: ArticleView.GRID,
   },
 };
 
 export const List: Story = {
   args: {
-    articles: [article, article],
-    isLoading: false,
-    view: ArticleView.LIST,
-  },
-};
-
-export const ListLoading: Story = {
-  args: {
-    articles: [],
-    isLoading: true,
+    article,
     view: ArticleView.LIST,
   },
 };
