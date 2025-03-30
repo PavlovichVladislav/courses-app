@@ -11,6 +11,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import ViewsIcon from 'shared/assets/icons/views.svg';
 import DateIcon from 'shared/assets/icons/date.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import styles from './ArticleDetails.module.scss';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
@@ -43,11 +44,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 
   const { t } = useTranslation('articleDetails');
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleById(id));
-    }
-  }, [dispatch, id]);
+  useInitialEffect(() => {
+    dispatch(fetchArticleById(id));
+  });
 
   const renderBlock = (block: ArticleBlock) => {
     switch (block.type) {

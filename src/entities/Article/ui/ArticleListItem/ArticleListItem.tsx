@@ -7,7 +7,6 @@ import { Text } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import ViewsIcon from 'shared/assets/icons/views.svg';
 import { Card } from 'shared/ui/Card';
-import { useHover } from 'shared/lib/hooks/useHover';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
@@ -25,9 +24,7 @@ interface ArticleListItemProps {
 
 export const ArticleListItem = ({ className, article, view }: ArticleListItemProps) => {
   const { t } = useTranslation();
-  const [isHover, bindHover] = useHover();
   const navigate = useNavigate();
-  console.log(isHover);
 
   const onOpenArticle = useCallback(() => {
     navigate(`${RoutePath.article_details}${article.id}`);
@@ -47,7 +44,7 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
     )) as ArticleTextBlock;
 
     return (
-      <div {...bindHover} className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
+      <div className={classNames(styles.articleListItem, {}, [className, styles[view]])}>
         <Card>
           <div className={styles.header}>
             <Avatar src={article.user.avatar} className={styles.avatar} size={30} />
@@ -74,7 +71,6 @@ export const ArticleListItem = ({ className, article, view }: ArticleListItemPro
   if (view === ArticleView.GRID) {
     return (
       <div
-        {...bindHover}
         className={classNames(styles.articleListItem, {}, [className, styles[view]])}
         onClick={onOpenArticle}
       >
