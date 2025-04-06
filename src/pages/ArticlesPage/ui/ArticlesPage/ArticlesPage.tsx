@@ -10,6 +10,7 @@ import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArt
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
+  getArticlesPageNumber,
   getArticlesPageView,
 } from '../../model/selectors/articlePageSelectors';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
@@ -29,9 +30,10 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const view = useSelector(getArticlesPageView);
   const error = useSelector(getArticlesPageError);
+  const page = useSelector(getArticlesPageNumber);
 
   useInitialEffect(() => {
-    dispatch(fetchArticleList());
+    dispatch(fetchArticleList({ page }));
     dispatch(articlesPageActions.initState());
   });
 

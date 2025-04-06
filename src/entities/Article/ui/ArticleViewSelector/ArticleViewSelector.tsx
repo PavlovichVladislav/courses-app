@@ -27,10 +27,11 @@ const viewTypes = [
 export const ArticleViewSelector = ({ className, view, onViewClick }: ArticleViewSelectorProps) => {
   return (
     <div className={classNames(styles.articleViewSelector, {}, [className])}>
-      {viewTypes.map((viewType) => (
+      {viewTypes.map((viewType, i) => (
         <Button
           theme={ButtonTheme.CLEAR}
           onClick={() => onViewClick(viewType.view)}
+          key={i}
         >
           <Icon Svg={viewType.icon} className={classNames('', { [styles.active]: view === viewType.view })} />
         </Button>
