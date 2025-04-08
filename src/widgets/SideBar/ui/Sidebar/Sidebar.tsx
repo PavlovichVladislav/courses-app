@@ -34,7 +34,7 @@ export function Sidebar({ className = '' }: SideBarProps) {
   ), [collapsed, sidebarItemsList]);
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}
     >
@@ -53,6 +53,6 @@ export function Sidebar({ className = '' }: SideBarProps) {
         </Button>
         <LanguageSwitcher short={collapsed} />
       </div>
-    </div>
+    </menu>
   );
 }

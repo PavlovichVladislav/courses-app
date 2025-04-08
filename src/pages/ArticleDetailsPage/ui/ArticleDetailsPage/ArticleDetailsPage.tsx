@@ -14,6 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
   articleDetailsCommentsReducer,
@@ -53,10 +54,10 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} reducerName="articleDetailsComments">
-      <Button theme={ButtonTheme.OUTLINE} onClick={onGoBack}>
-        {t('Назад к списку')}
-      </Button>
-      <div className={classNames(styles.articleDetailsPage, {}, [className])}>
+      <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
+        <Button theme={ButtonTheme.OUTLINE} onClick={onGoBack}>
+          {t('Назад к списку')}
+        </Button>
         <ArticleDetails id={id} />
         <Text title={t('Комментарии')} />
         <AddCommentForm sendComment={sendComment} />
@@ -64,7 +65,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
           comments={comments}
           isLoading={isLoading}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
