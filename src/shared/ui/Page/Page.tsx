@@ -7,16 +7,17 @@ import styles from './Page.module.scss';
 interface PageProps {
   className?: string
   children: ReactNode;
+  onScrollEnd?: () => void;
 }
 
-export const Page = ({ className, children }: PageProps) => {
+export const Page = ({ className, children, onScrollEnd }: PageProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   useInfinityScroll({
     triggerRef,
     wrapperRef,
-    cb: () => console.log('cb'),
+    cb: onScrollEnd,
   });
 
   return (
