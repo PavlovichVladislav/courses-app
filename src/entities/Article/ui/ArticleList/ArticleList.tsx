@@ -34,7 +34,6 @@ export const ArticleList = ({
     <ArticleListItem article={article} view={view} key={article.id} />
   );
 
-  if (isLoading) return 'загрузка';
   return (
     <div className={classNames(styles.articleList, {}, [className, styles[view]])}>
       {articles.length > 0 ? (

@@ -21,6 +21,7 @@ export const useInfinityScroll = ({ wrapperRef, triggerRef, cb }: UseInfinityScr
         if (entry.isIntersecting) { // проверка нужна, чтобы cb отрабатывал только огда объект появляется в зоне видимости
           // сейчас он отработает и тогда, когда он пропадает из зоны видимости
           console.log('intersected');
+          cb();
         }
       }, options); // переданный cb будет вызываться
       // когда на экрана появляется элемент за которым мы смотрим

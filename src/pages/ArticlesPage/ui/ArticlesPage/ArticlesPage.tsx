@@ -33,6 +33,11 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const error = useSelector(getArticlesPageError);
   const page = useSelector(getArticlesPageNumber);
 
+  const onLoadNextPart = () => {
+    dispatch(articlesPageActions.setPage(page + 1));
+    dispatch(fetchArticleList({ page: page + 1 }));
+  };
+
   useInitialEffect(() => {
     dispatch(articlesPageActions.initState());
     dispatch(fetchArticleList({ page }));
@@ -44,7 +49,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} reducerName="articlesPage">
-      <Page className={classNames(styles.articlesPage, {}, [className])}>
+      <Page onScrollEnd={onLoadNextPart} className={classNames(styles.articlesPage, {}, [className])}>
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList isLoading={isLoading} articles={articles} view={view} />
       </Page>
