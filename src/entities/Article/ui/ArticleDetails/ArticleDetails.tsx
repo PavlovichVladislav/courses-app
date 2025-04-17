@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { DynamicModuleLoader, ReducersList } from 'shared/ui/DynamicModuleLoader/DynamicModuleLoader';
-import { memo, ReactNode, useEffect } from 'react';
+import { memo, ReactNode } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';

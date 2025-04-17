@@ -34,6 +34,8 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const page = useSelector(getArticlesPageNumber);
 
   const onLoadNextPart = () => {
+    if (isLoading) return;
+
     dispatch(articlesPageActions.setPage(page + 1));
     dispatch(fetchArticleList({ page: page + 1 }));
   };

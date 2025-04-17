@@ -16,19 +16,13 @@ interface ArticleListProps {
 export const ArticleList = ({
   className, articles, isLoading, view,
 }: ArticleListProps) => {
-  if (isLoading) {
-    return (
-      <div className={classNames(styles.articleList, {}, [className, styles[view]])}>
-        {
-          new Array(view === ArticleView.GRID ? 9 : 3)
-            .fill(0)
-            .map((_, index) => (
-              <ArticleListItemSkeleton key={index} view={view} />
-            ))
-        }
-      </div>
-    );
-  }
+  const renderSkeletons = () => {
+    return new Array(view === ArticleView.GRID ? 9 : 3)
+      .fill(0)
+      .map((_, index) => (
+        <ArticleListItemSkeleton key={index} view={view} />
+      ));
+  };
 
   const renderArticle = (article: Article) => (
     <ArticleListItem article={article} view={view} key={article.id} />
@@ -39,6 +33,7 @@ export const ArticleList = ({
       {articles.length > 0 ? (
         articles.map(renderArticle)
       ) : null}
+      {isLoading && renderSkeletons()}
     </div>
   );
 };
