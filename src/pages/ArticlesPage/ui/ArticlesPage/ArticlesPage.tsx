@@ -7,6 +7,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
 import {
   getArticlesPageError,
@@ -34,10 +35,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const page = useSelector(getArticlesPageNumber);
 
   const onLoadNextPart = () => {
-    if (isLoading) return;
-
-    dispatch(articlesPageActions.setPage(page + 1));
-    dispatch(fetchArticleList({ page: page + 1 }));
+    dispatch(fetchNextArticlesPage());
   };
 
   useInitialEffect(() => {
