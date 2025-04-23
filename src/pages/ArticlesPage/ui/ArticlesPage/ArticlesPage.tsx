@@ -47,6 +47,10 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     dispatch(articlesPageActions.setView(view));
   };
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <DynamicModuleLoader reducers={reducers} reducerName="articlesPage">
       <Page onScrollEnd={onLoadNextPart} className={classNames(styles.articlesPage, {}, [className])}>

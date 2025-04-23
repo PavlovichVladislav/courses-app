@@ -31,8 +31,11 @@ export const useInfinityScroll = ({ wrapperRef, triggerRef, cb }: UseInfinityScr
 
     return () => {
       if (observer) {
+        const triggerElement = triggerRef;
+
+        debugger;
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(triggerRef.current);
+        observer.unobserve(triggerElement.current);
       }
     };
   }, [triggerRef, wrapperRef, cb]);
