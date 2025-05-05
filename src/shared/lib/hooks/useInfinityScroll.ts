@@ -9,10 +9,12 @@ export interface UseInfinityScrollOptions {
 export const useInfinityScroll = ({ wrapperRef, triggerRef, cb }: UseInfinityScrollOptions) => {
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
+    const wrapperElement = wrapperRef.current;
+    const triggerElement = triggerRef.current;
 
     if (cb) {
       const options = {
-        root: wrapperRef.current, // элемент, в котором находится скролл
+        root: wrapperElement, // элемент, в котором находится скролл
         rootMargin: '0px',
         threshold: 1.0,
       };
@@ -26,16 +28,14 @@ export const useInfinityScroll = ({ wrapperRef, triggerRef, cb }: UseInfinityScr
       }, options); // переданный cb будет вызываться
       // когда на экрана появляется элемент за которым мы смотрим
 
-      observer.observe(triggerRef.current); // указываем обзерверу за чем именно мы следим
+      observer.observe(triggerElement); // указываем обзерверу за чем именно мы следим
     }
 
     return () => {
-      if (observer) {
-        const triggerElement = triggerRef;
-
+      if (observer && triggerElement) {
         debugger;
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(triggerElement.current);
+        observer.unobserve(triggerElement);
       }
     };
   }, [triggerRef, wrapperRef, cb]);
